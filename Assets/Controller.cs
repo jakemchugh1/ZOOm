@@ -13,9 +13,11 @@ public class Controller : MonoBehaviour
     public float accel;
 
     public float turn;
+
+    public Rigidbody rb;
     void Start()
     {
-        
+        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -26,7 +28,9 @@ public class Controller : MonoBehaviour
             if (Input.GetKey(KeyCode.W))
             {
                 goForward();
-            }else if (Input.GetKey(KeyCode.S))
+                rb.AddForce(transform.forward * 5);
+            }
+            else if (Input.GetKey(KeyCode.S))
             {
                 goBackward();
             }
@@ -41,7 +45,8 @@ public class Controller : MonoBehaviour
             }
         }
 
-        transform.position += transform.forward * Time.deltaTime * currentSpeed;
+        
+        if (rb.velocity.magnitude > 10) rb.velocity = rb.velocity * 10;
     }
 
     void goForward()
