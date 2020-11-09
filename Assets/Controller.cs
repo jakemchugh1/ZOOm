@@ -28,7 +28,7 @@ public class Controller : MonoBehaviour
             if (Input.GetKey(KeyCode.W))
             {
                 goForward();
-                rb.AddForce(transform.forward * 5);
+                //rb.AddForce(transform.forward * 5);
             }
             else if (Input.GetKey(KeyCode.S))
             {
@@ -45,8 +45,8 @@ public class Controller : MonoBehaviour
             }
         }
 
-        
-        if (rb.velocity.magnitude > 10) rb.velocity = rb.velocity * 10;
+        transform.position += transform.forward * Time.deltaTime * currentSpeed;
+        //if (rb.velocity.magnitude > 10) rb.velocity = rb.velocity * 10;
     }
 
     void goForward()
