@@ -159,14 +159,14 @@ public class MapGenerator : MonoBehaviour {
     {
       
      
-        if (File.Exists("Track2"))
+        if (File.Exists("Track3"))
         {
  
             try
             {
                 // Create a FileStream will gain read access to the 
                 // data file.
-                FileStream readerFileStream = new FileStream("Track2", 
+                FileStream readerFileStream = new FileStream("Track3", 
                     FileMode.Open, FileAccess.Read);
                 // Reconstruct information of our friends from file.
                 this.tileList = (List<TileData>)this.formatter.Deserialize(readerFileStream);
