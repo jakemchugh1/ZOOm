@@ -43,8 +43,8 @@ public class TrackSpawner : MonoBehaviour
         spawnOrigin = new Vector3(0,0,0);
         this.tileList = new List<TileData>();
         this.formatter = new BinaryFormatter();
-        // spawnTiles();
-        LoadData();
+        spawnTiles();
+        // LoadData();
 
         // racers = FindObjectsOfType<NavMeshAgent>();
 

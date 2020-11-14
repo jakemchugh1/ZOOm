@@ -884,9 +884,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tile: {fileID: 8155442272134222468, guid: 6922e3087385f4fcbb5ef861245d10db, type: 3}
-  numbOfTiles: 10
+  numbOfTiles: 100
   tiles: []
   spawnOrigin: {x: 0, y: 0, z: 0}
+  spawnPosition: {x: 0, y: 0, z: 0}
+  tileWidth: 3
+  tileHeight: 3
+  navMesh: {fileID: 0}
+  racers: []
 --- !u!1 &2008893779
 GameObject:
   m_ObjectHideFlags: 0

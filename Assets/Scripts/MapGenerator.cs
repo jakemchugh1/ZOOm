@@ -68,9 +68,7 @@ public class MapGenerator : MonoBehaviour {
 		}
 		
 		for (int i = 0; i<this.tileList.Count; i++){
-			Direction exitDirection;
         TileData t = tileList[i];
-        		Debug.Log(t.exitDirection);
 
              switch (t.exitDirection)
              {
