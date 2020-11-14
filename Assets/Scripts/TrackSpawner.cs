@@ -43,8 +43,8 @@ public class TrackSpawner : MonoBehaviour
         spawnOrigin = new Vector3(0,0,0);
         this.tileList = new List<TileData>();
         this.formatter = new BinaryFormatter();
-        spawnTiles();
-        // LoadData();
+        // spawnTiles();
+        LoadData();
 
         // racers = FindObjectsOfType<NavMeshAgent>();
 
@@ -143,14 +143,14 @@ public class TrackSpawner : MonoBehaviour
         // Check if we had previously Save information of our friends
         // previously
      
-        if (File.Exists("Track"))
+        if (File.Exists("Track2"))
         {
  
             try
             {
                 // Create a FileStream will gain read access to the 
                 // data file.
-                FileStream readerFileStream = new FileStream("Track", 
+                FileStream readerFileStream = new FileStream("Track2", 
                     FileMode.Open, FileAccess.Read);
                 // Reconstruct information of our friends from file.
                 this.tileList = (List<TileData>)this.formatter.Deserialize(readerFileStream);
