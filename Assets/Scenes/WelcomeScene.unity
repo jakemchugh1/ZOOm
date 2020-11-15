@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -640,7 +640,7 @@ GameObject:
   - component: {fileID: 265915998}
   - component: {fileID: 265915999}
   m_Layer: 5
-  m_Name: Toggle
+  m_Name: ToggleHippo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1493,7 +1493,7 @@ GameObject:
   - component: {fileID: 760309529}
   - component: {fileID: 760309530}
   m_Layer: 5
-  m_Name: Toggle (3)
+  m_Name: ToggleTC
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1578,7 +1578,7 @@ GameObject:
   - component: {fileID: 768443677}
   - component: {fileID: 768443678}
   m_Layer: 5
-  m_Name: Toggle (1)
+  m_Name: ToggleT2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1663,7 +1663,7 @@ GameObject:
   - component: {fileID: 921173816}
   - component: {fileID: 921173817}
   m_Layer: 5
-  m_Name: Toggle (3)
+  m_Name: ToggleGiraff
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1968,7 +1968,7 @@ GameObject:
   - component: {fileID: 972629802}
   - component: {fileID: 972629803}
   m_Layer: 5
-  m_Name: Toggle
+  m_Name: ToggleT1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2041,7 +2041,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_IsOn: 0
+  m_IsOn: 1
 --- !u!1 &1082685524
 GameObject:
   m_ObjectHideFlags: 0
@@ -2126,7 +2126,7 @@ GameObject:
   - component: {fileID: 1104097324}
   - component: {fileID: 1104097325}
   m_Layer: 5
-  m_Name: Toggle (1)
+  m_Name: ToggleLion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3232,7 +3232,7 @@ GameObject:
   - component: {fileID: 1729521820}
   - component: {fileID: 1729521821}
   m_Layer: 5
-  m_Name: Toggle (2)
+  m_Name: TogglePenguin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3689,6 +3689,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startBtn: {fileID: 147631067}
+  toggleHippo: {fileID: 265915999}
+  toggleLion: {fileID: 1104097325}
+  togglePenguin: {fileID: 1729521821}
+  toggleGiraff: {fileID: 921173817}
+  toggleTrack1: {fileID: 972629803}
+  toggleTrack2: {fileID: 768443678}
+  toggleTrack3: {fileID: 2106887244}
+  toggleTrackCustom: {fileID: 760309530}
 --- !u!1 &1945597600
 GameObject:
   m_ObjectHideFlags: 0
@@ -4082,7 +4090,7 @@ GameObject:
   - component: {fileID: 2106887243}
   - component: {fileID: 2106887244}
   m_Layer: 5
-  m_Name: Toggle (2)
+  m_Name: ToggleT3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

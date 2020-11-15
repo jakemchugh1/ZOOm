@@ -126,7 +126,7 @@ public class TrackSpawner : MonoBehaviour
         {
             // Create a FileStream that will write data to file.
             FileStream writerFileStream = 
-                new FileStream("Track", FileMode.Create, FileAccess.Write);
+                new FileStream(GlobalVariables.selectedFile, FileMode.Create, FileAccess.Write);
             // Save our dictionary of friends to file
             this.formatter.Serialize(writerFileStream, this.tileList);
  
@@ -143,14 +143,14 @@ public class TrackSpawner : MonoBehaviour
         // Check if we had previously Save information of our friends
         // previously
      
-        if (File.Exists("Track2"))
+        if (File.Exists(GlobalVariables.selectedFile))
         {
  
             try
             {
                 // Create a FileStream will gain read access to the 
                 // data file.
-                FileStream readerFileStream = new FileStream("Track2", 
+                FileStream readerFileStream = new FileStream(GlobalVariables.selectedFile, 
                     FileMode.Open, FileAccess.Read);
                 // Reconstruct information of our friends from file.
                 this.tileList = (List<TileData>)this.formatter.Deserialize(readerFileStream);

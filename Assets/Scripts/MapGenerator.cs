@@ -5,6 +5,8 @@ using System.IO;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
 public class MapGenerator : MonoBehaviour {
 	
 	public Transform tilePrefab;
@@ -22,7 +24,7 @@ public class MapGenerator : MonoBehaviour {
    
     private BinaryFormatter formatter;
 	
-	public Button btnLoad, btnCreate, btnSave, btnReset;
+	public Button btnLoad, btnCreate, btnSave, btnReset, btnDone;
 
 	private TileData preTile = null;
 
@@ -35,6 +37,8 @@ public class MapGenerator : MonoBehaviour {
 		btnC.onClick.AddListener(createTrack);
 		Button btnS = btnSave.GetComponent<Button>();
 		btnS.onClick.AddListener(saveTrack);
+		Button btnD = btnDone.GetComponent<Button>();
+		btnD.onClick.AddListener(backHome);
 		this.tileList = new List<TileData>();
         this.formatter = new BinaryFormatter();
 		GenerateMap ();
@@ -159,14 +163,14 @@ public class MapGenerator : MonoBehaviour {
     {
       
      
-        if (File.Exists("Track3"))
+        if (File.Exists("Track"))
         {
  
             try
             {
                 // Create a FileStream will gain read access to the 
                 // data file.
-                FileStream readerFileStream = new FileStream("Track3", 
+                FileStream readerFileStream = new FileStream("Track", 
                     FileMode.Open, FileAccess.Read);
                 // Reconstruct information of our friends from file.
                 this.tileList = (List<TileData>)this.formatter.Deserialize(readerFileStream);
@@ -221,7 +225,12 @@ public class MapGenerator : MonoBehaviour {
             Debug.Log(e);
         } // end try-catch
 	 }
-	// end public bool Load()
+
+
+	 public void backHome(){
+		 SceneManager.LoadScene(1);
+	 }
+
 	Vector3 CoordToPosition(int x, int y) {
 		return new Vector3 (scalePercent*(-mapSize.x / 2 + 0.5f + x),  scalePercent*(-mapSize.y / 2 + 0.5f + y), 0);
 	}
