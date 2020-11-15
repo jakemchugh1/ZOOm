@@ -13,7 +13,7 @@ public enum Direction
 public class TrackSpawner : MonoBehaviour
 {
     public GameObject tile;
-
+       
     public int numbOfTiles;
 
     public List<GameObject> tiles;
@@ -76,8 +76,8 @@ public class TrackSpawner : MonoBehaviour
     void spawnTiles()
     {
         for(int i = 0; i < numbOfTiles; i++)
-
-        {   Direction exitDirection;
+        {  
+            Direction exitDirection;
             if(i==0) 
                 exitDirection = Direction.Origin;
             else
@@ -101,11 +101,21 @@ public class TrackSpawner : MonoBehaviour
                 break; 
 
              }  
-             spawnOrigin += spawnPosition;
-            GameObject newTile= Instantiate( tile, spawnOrigin, Quaternion.identity,transform);
+            
+            spawnOrigin += spawnPosition;
+            GameObject newTile = null;
+            if(preTile){
+                if(preTile.GetComponent<TileObject>().exitDirection  == Direction.Left|| preTile.GetComponent<TileObject>().exitDirection == Direction.Right)
+                    newTile= Instantiate( tile, spawnOrigin,  Quaternion.Euler(0, 90, 0),transform);
+                else
+                    newTile= Instantiate( tile, spawnOrigin, Quaternion.identity,transform);
+             newTile.GetComponent<TileObject>().entryDirection = preTile.GetComponent<TileObject>().exitDirection ;
+
+            }else
+                newTile= Instantiate( tile, spawnOrigin, Quaternion.identity,transform);
+            
             newTile.GetComponent<TileObject>().exitDirection = exitDirection;
-            if(preTile)
-               newTile.GetComponent<TileObject>().entryDirection = newTile.GetComponent<TileObject>().exitDirection ;
+         
             preTile = newTile;
             tiles.Add(newTile);
         }
@@ -196,10 +206,15 @@ public class TrackSpawner : MonoBehaviour
 
              }  
              spawnOrigin += spawnPosition;
-            GameObject newTile= Instantiate( tile, spawnOrigin, Quaternion.identity,transform);
+             GameObject newTile = null;
+            if(t.entryDirection == Direction.Left || t.entryDirection == Direction.Right)
+                newTile= Instantiate( tile, spawnOrigin, Quaternion.Euler(0, 90, 0),transform);
+            else
+                newTile= Instantiate( tile, spawnOrigin, Quaternion.identity,transform);
             newTile.GetComponent<TileObject>().exitDirection = t.exitDirection;
+            
             if(preTile)
-               newTile.GetComponent<TileObject>().entryDirection = newTile.GetComponent<TileObject>().exitDirection ;
+               newTile.GetComponent<TileObject>().entryDirection = preTile.GetComponent<TileObject>().exitDirection ;
             preTile = newTile;
             tiles.Add(newTile);
         }
