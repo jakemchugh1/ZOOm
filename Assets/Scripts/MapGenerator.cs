@@ -46,8 +46,14 @@ public class MapGenerator : MonoBehaviour {
 
 	}
 	void Update(){
+
 		 if (Input.GetKeyDown(KeyCode.W))
         {
+			if(this.tileList.Count==1){
+				TileData t0 = this.tileList[0];
+				t0.exitDirection=Direction.Up;
+				this.tileList[0]=t0;
+			}
             mapCentre.y +=1;
 			Vector3 tilePosition = CoordToPositionUp(mapCentre.x,mapCentre.y);
 			Transform newTile = Instantiate (obstaclePrefab, tilePosition, Quaternion.identity) as Transform;
@@ -60,6 +66,11 @@ public class MapGenerator : MonoBehaviour {
         }
 		if (Input.GetKeyDown(KeyCode.A))
         {
+				if(this.tileList.Count==1){
+				TileData t0 = this.tileList[0];
+				t0.exitDirection=Direction.Left;
+				this.tileList[0]=t0;
+			}
             mapCentre.x -=1;
 			Vector3 tilePosition = CoordToPositionUp(mapCentre.x,mapCentre.y);
 				Transform newTile = Instantiate (obstaclePrefab, tilePosition, Quaternion.identity) as Transform;
@@ -71,6 +82,11 @@ public class MapGenerator : MonoBehaviour {
         }
 		if (Input.GetKeyDown(KeyCode.S))
         {
+				if(this.tileList.Count==1){
+				TileData t0 = this.tileList[0];
+				t0.exitDirection=Direction.Down;
+				this.tileList[0]=t0;
+			}
             mapCentre.y -=1;
 			Vector3 tilePosition = CoordToPositionUp(mapCentre.x,mapCentre.y);
 				Transform newTile = Instantiate (obstaclePrefab, tilePosition, Quaternion.identity) as Transform;
@@ -82,6 +98,11 @@ public class MapGenerator : MonoBehaviour {
         }
 		if (Input.GetKeyDown(KeyCode.D))
         {
+				if(this.tileList.Count==1){
+				TileData t0 = this.tileList[0];
+				t0.exitDirection=Direction.Right;
+				this.tileList[0]=t0;
+			}
             mapCentre.x +=1;
 			Vector3 tilePosition = CoordToPositionUp(mapCentre.x,mapCentre.y);
 				Transform newTile = Instantiate (obstaclePrefab, tilePosition, Quaternion.identity) as Transform;
@@ -162,7 +183,7 @@ public class MapGenerator : MonoBehaviour {
 	public void LoadData() 
     {
       
-     
+		resetTrack();
         if (File.Exists("Track"))
         {
  
