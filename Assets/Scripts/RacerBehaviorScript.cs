@@ -143,6 +143,10 @@ public class RacerBehaviorScript : MonoBehaviour
         {
             currentSpeed += acceleration * Time.deltaTime;
         }
+        else
+        {
+            brake();
+        }
         
     }
 

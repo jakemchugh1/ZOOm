@@ -220,7 +220,7 @@ public class TrackSpawner : MonoBehaviour
                      newTile = Instantiate(tile, spawnOrigin, Quaternion.Euler(0, 0, 0), transform);
 
                 }
-                // newTile.transform.position += new Vector3(tileHeight, 0, 0);
+                 newTile.transform.localPosition += new Vector3(tileHeight, 0, 0);
                 firstTile = newTile;
              }else if (i == 1)
                 ///spawns second
