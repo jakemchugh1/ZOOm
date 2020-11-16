@@ -6,12 +6,12 @@ using UnityEngine.SceneManagement;
 
 public enum Animal
 {
-    Hippo, Lion, Penguin, Giraff
+    Bear, Monkey, Penguin, Rabbit
 }    
 public class WelcomeScript : MonoBehaviour
 {
     public Button startBtn;
-    public Toggle toggleHippo, toggleLion, togglePenguin, toggleGiraff;
+    public Toggle toggleBear, toggleMonkey, togglePenguin, toggleRabbit;
     public Toggle toggleTrack1, toggleTrack2 , toggleTrack3, toggleTrackCustom;
 
     // Start is called before the first frame update
@@ -35,7 +35,21 @@ public class WelcomeScript : MonoBehaviour
 
     void startedClick()
     {
-       //SceneManager.LoadScene(1);
+       // Select Animal
+       Toggle a1 = toggleBear.GetComponent<Toggle>();
+       Toggle a2 = toggleMonkey.GetComponent<Toggle>();
+       Toggle a3 = togglePenguin.GetComponent<Toggle>();
+       Toggle a4 = toggleRabbit.GetComponent<Toggle>(); 
+       if(a1.isOn)
+            GlobalVariables.selectedAnimal = Animal.Bear;
+        else if(a2.isOn)
+            GlobalVariables.selectedAnimal = Animal.Monkey;
+        else if(a3.isOn)
+            GlobalVariables.selectedAnimal = Animal.Penguin;
+        else if(a4.isOn)
+            GlobalVariables.selectedAnimal = Animal.Rabbit;
+
+       // Select Track
        Toggle t1 = toggleTrack1.GetComponent<Toggle>();
        Toggle t2 = toggleTrack2.GetComponent<Toggle>();
        Toggle t3 = toggleTrack3.GetComponent<Toggle>();
@@ -43,6 +57,7 @@ public class WelcomeScript : MonoBehaviour
 
        if(tc.isOn){
        GlobalVariables.selectedFile = "Track";
+       
        SceneManager.LoadScene(2);
        }else{
        if(t1.isOn)
