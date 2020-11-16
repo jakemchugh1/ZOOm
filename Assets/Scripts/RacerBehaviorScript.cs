@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RacerBehaviorScript : MonoBehaviour
 {
@@ -21,21 +22,13 @@ public class RacerBehaviorScript : MonoBehaviour
     public float mediumSteerTolerance;
     public float hardSteerTolerance;
 
-    public List<GameObject> animals;
-
     public int lap;
+
+    bool started = false;
     // Start is called before the first frame update
     void Start()
     {
-                Debug.Log(GlobalVariables.selectedAnimal);
-
-        Debug.Log((int)GlobalVariables.selectedAnimal);
-        Vector3 riderPos = new Vector3(0, 0, 0);
-        GameObject animal = Instantiate( animals[(int)GlobalVariables.selectedAnimal], riderPos,  Quaternion.identity,transform);
-        animal.transform.localScale = new Vector3(0.25f, 0.25f, 0.25f);
-        animal.transform.parent = transform;
-        animal.transform.localPosition = new Vector3(0, 0.1f, 0);
-
+        StartCoroutine(Countdown());
         rb = GetComponent<Rigidbody>();
         Direction startingDirection = FindObjectOfType<TileObject>().exitDirection;
         switch (startingDirection)
@@ -58,6 +51,7 @@ public class RacerBehaviorScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!started) return;
         if (hovering) freeze();
         else runBehavior();
         returnToTrack();
@@ -112,6 +106,7 @@ public class RacerBehaviorScript : MonoBehaviour
 
     void easyAI()
     {
+        StartCoroutine(Countdown());
         if (getNextTile())
         {
 
@@ -303,5 +298,11 @@ public class RacerBehaviorScript : MonoBehaviour
                 wrongWay();
             }
         }
+    }
+
+    IEnumerator Countdown()
+    {
+        yield return new WaitForSeconds(4f);
+        started = true;
     }
 }
