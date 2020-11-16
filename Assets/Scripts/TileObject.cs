@@ -26,4 +26,22 @@ public class TileObject : MonoBehaviour
         return nodes[Random.Range(0,nodes.Length)].gameObject;
     }
 
+    public GameObject getNearestTile(Vector3 position)
+    {
+        if (nodes.Length <= 0) return gameObject;
+        GameObject nearest = nodes[0].gameObject;
+        float distance = Vector3.Distance(position, nearest.transform.position);
+        for(int i = 0; i < nodes.Length; i++)
+        {
+            
+            if(Vector3.Distance(position, nodes[i].transform.position) < distance)
+            {
+                distance = Vector3.Distance(position, nodes[i].transform.position);
+                nearest = nodes[i].gameObject;
+            }
+        }
+
+        return nearest;
+    }
+
 }

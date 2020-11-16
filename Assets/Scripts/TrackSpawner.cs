@@ -40,7 +40,7 @@ public class TrackSpawner : MonoBehaviour
 
      
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         spawnOrigin = new Vector3(0,0,0);
         this.tileList = new List<TileData>();
@@ -61,11 +61,6 @@ public class TrackSpawner : MonoBehaviour
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     void spawnTiles()
     {
@@ -174,7 +169,7 @@ public class TrackSpawner : MonoBehaviour
     } // end public bool Load()
     void loadTiles()
     {
-        GameObject previousTile = null;
+        //GameObject previousTile = null;
         for(int i = 0; i < tileList.Count; i++){  
             TileData t = tileList[i];
         
@@ -264,6 +259,7 @@ public class TrackSpawner : MonoBehaviour
                 }
          
              }
+
              newTile.GetComponent<TileObject>().exitDirection = t.exitDirection;
 
             if (preTile)

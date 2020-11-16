@@ -227,11 +227,11 @@ public class MapGenerator : MonoBehaviour {
 	} 
 	 
 	 public void createTrack(){
-		 preTile = null;
+		preTile = null;
 		resetTrack();
-		        isCreating = true;
+		isCreating = true;
 
-		mapCentre = new Coord ((int)mapSize.x/2 , -1);
+		mapCentre = new Coord ((int)mapSize.x/2 , 0);
 		// Vector3 tilePosition = CoordToPositionUp(mapCentre.x,mapCentre.y);
 		// 		Transform newTile = Instantiate (obstaclePrefab, tilePosition, Quaternion.identity) as Transform;
 		// 		newTile.localScale = Vector3.one * (scalePercent - outlinePercent);
@@ -242,7 +242,7 @@ public class MapGenerator : MonoBehaviour {
 	 }
 
 	 public void saveTrack(){
-		         isCreating = false;
+		 isCreating = false;
 		 try
         {
             // Create a FileStream that will write data to file.
