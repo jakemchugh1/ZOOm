@@ -33,9 +33,6 @@ public class TrackSpawner : MonoBehaviour
 
     public float tileHeight = 3f;
 
-    public NavMeshSurface navMesh;
-
-    public NavMeshAgent[] racers;
 
     private List<TileData> tileList;
    
@@ -70,14 +67,6 @@ public class TrackSpawner : MonoBehaviour
         
     }
 
-    void setDestination()
-    {
-        Debug.Log(spawnPosition);
-        for (int i = 0; i < racers.Length; i++)
-        {
-            racers[i].destination = spawnOrigin;
-        }
-    }
     void spawnTiles()
     {
         for(int i = 0; i < numbOfTiles; i++)
@@ -183,12 +172,11 @@ public class TrackSpawner : MonoBehaviour
         loadTiles();
          
     } // end public bool Load()
- void loadTiles()
+    void loadTiles()
     {
-        for(int i = 0; i < tileList.Count; i++)
-
-        {  
-        TileData t = tileList[i];
+        GameObject previousTile = null;
+        for(int i = 0; i < tileList.Count; i++){  
+            TileData t = tileList[i];
         
              switch (t.entryDirection)
              {
@@ -212,12 +200,16 @@ public class TrackSpawner : MonoBehaviour
              spawnOrigin += spawnPosition;
              GameObject newTile = null;
              if(i==0){
-                 if(t.exitDirection == Direction.Left || t.exitDirection == Direction.Right )
-                    newTile= Instantiate( tile, spawnOrigin,  Quaternion.Euler(0, 90, 0),transform);
-                 else
-                    newTile= Instantiate( tile, spawnOrigin,  Quaternion.identity,transform);
+                if (t.exitDirection == Direction.Left || t.exitDirection == Direction.Right)
+                {
+                    newTile = Instantiate(tile, spawnOrigin, Quaternion.Euler(0, 90, 0), transform);
+                }
+                else
+                {
+                    newTile = Instantiate(tile, spawnOrigin, Quaternion.identity, transform);
+                }
              }
-            else if(t.entryDirection!=t.exitDirection&&t.entryDirection!=Direction.Origin){
+             else if(t.entryDirection!=t.exitDirection&&t.entryDirection!=Direction.Origin){
               
                if(t.entryDirection == Direction.Up)
                {
@@ -259,17 +251,32 @@ public class TrackSpawner : MonoBehaviour
                else
                 newTile= Instantiate( tileIntersect, spawnOrigin, Quaternion.identity,transform);
 
-            }else{
-                if(t.entryDirection == Direction.Left || t.entryDirection == Direction.Right)
-                newTile= Instantiate( tile, spawnOrigin, Quaternion.Euler(0, 90, 0),transform);
-            else
-                newTile= Instantiate( tile, spawnOrigin, Quaternion.identity,transform);
+             }
+             else{
+                if (t.entryDirection == Direction.Left || t.entryDirection == Direction.Right)
+                {
+                    newTile = Instantiate(tile, spawnOrigin, Quaternion.Euler(0, 90, 0), transform);
+
+                }
+                else
+                {
+                    newTile = Instantiate(tile, spawnOrigin, Quaternion.identity, transform);
+                }
          
-            }
+             }
              newTile.GetComponent<TileObject>().exitDirection = t.exitDirection;
+
+            if (preTile)
+            {
+
+                //preTile.GetComponent<TileObject>().nextTile = newTile.GetComponent<TileObject>();
+                //newTile.GetComponent<TileObject>().previousTile = preTile.GetComponent<TileObject>();
+                preTile.GetComponent<TileObject>().nextTile = newTile.GetComponent<TileObject>();
+                newTile.GetComponent<TileObject>().entryDirection = preTile.GetComponent<TileObject>().exitDirection;
+            }
+
+            newTile.GetComponent<TileObject>().tileIndex = i;
             
-            if(preTile)
-               newTile.GetComponent<TileObject>().entryDirection = preTile.GetComponent<TileObject>().exitDirection ;
             preTile = newTile;
             tiles.Add(newTile);
         }

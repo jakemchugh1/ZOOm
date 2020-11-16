@@ -8,6 +8,10 @@ public class TileObject : MonoBehaviour
     
     public Direction entryDirection;
     public Direction exitDirection;
+    
+    public TileObject nextTile;
+
+    public int tileIndex;
     void Start()
     {
     exitDirection = (Direction)Random.Range(0, 3);        
@@ -19,4 +23,5 @@ public class TileObject : MonoBehaviour
     {
         
     }
+
 }

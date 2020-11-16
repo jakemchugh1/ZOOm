@@ -14,6 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entryDirection: 2
   exitDirection: 2
+  tileIndex: 0
+  nextTile: {fileID: 0}
+  previousTile: {fileID: 0}
 --- !u!1001 &996054852672551708
 PrefabInstance:
   m_ObjectHideFlags: 0
