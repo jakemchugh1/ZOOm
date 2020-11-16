@@ -52,8 +52,11 @@ public class MapGenerator : MonoBehaviour {
 		return;	
 		 if (Input.GetKeyDown(KeyCode.W))
         {		
-			
+			if(this.tileList.Count!=0)
             mapCentre.y +=1;
+			else
+			  mapCentre.y = 0;
+
 			Vector3 tilePosition = CoordToPositionUp(mapCentre.x,mapCentre.y);
 			Transform newTile = Instantiate (obstaclePrefab, tilePosition, Quaternion.identity) as Transform;
 			newTile.localScale = Vector3.one * (scalePercent - outlinePercent);
@@ -86,8 +89,10 @@ public class MapGenerator : MonoBehaviour {
         }
 		if (Input.GetKeyDown(KeyCode.S))
         {
-			
+			if(this.tileList.Count!=0)
             mapCentre.y -=1;
+			else
+			  mapCentre.y = 0;
 			Vector3 tilePosition = CoordToPositionUp(mapCentre.x,mapCentre.y);
 				Transform newTile = Instantiate (obstaclePrefab, tilePosition, Quaternion.identity) as Transform;
 				newTile.localScale = Vector3.one * (scalePercent - outlinePercent);

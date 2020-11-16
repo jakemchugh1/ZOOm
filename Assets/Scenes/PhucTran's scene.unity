@@ -828,7 +828,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9aa916096ab64b01b2036340880cf93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tile: {fileID: 1975764349185265623, guid: ae1762ceb129f3b40bdb014facd2f5c7, type: 3}
+  tile: {fileID: 217215992449027326, guid: 14034181b5a48d44ca903b84116f27ba, type: 3}
   tileIntersect: {fileID: 363217989434884438, guid: ed2839ed15c9e40b1ab4c32a19783b47,
     type: 3}
   tileTurnLR: {fileID: 4278024853783922894, guid: 4c06ca8aafd7abe4bafd46f1e77d6b48,
@@ -844,7 +844,6 @@ MonoBehaviour:
   - {fileID: 5672802968346131644, guid: 3bca0cbfbc32eff4897dec3512b85888, type: 3}
   - {fileID: 1335862176154179993, guid: 49d6be0ae21486a44ab8ee8027e614f8, type: 3}
   - {fileID: 7517016762791969086, guid: beae020985002f049b6af1f596953404, type: 3}
-  - {fileID: 217215992449027326, guid: 14034181b5a48d44ca903b84116f27ba, type: 3}
   - {fileID: 5201363242625863144, guid: f7104a0230102c9478b80c73b7184c97, type: 3}
   corners:
   - {fileID: 4278024853783922894, guid: 4c06ca8aafd7abe4bafd46f1e77d6b48, type: 3}

@@ -176,7 +176,8 @@ public class TrackSpawner : MonoBehaviour
         GameObject lastTile = null;
         for(int i = 0; i < tileList.Count; i++){  
             TileData t = tileList[i];
-        
+                            Debug.Log(t.entryDirection); 
+
              switch (t.entryDirection)
              {
                 case(Direction.Up):
@@ -195,20 +196,31 @@ public class TrackSpawner : MonoBehaviour
                     spawnPosition =  new Vector3(0,0,0);
                 break; 
 
-             }  
+             } 
+ 
              spawnOrigin += spawnPosition;
              GameObject newTile = null;
              if(i==0){
+               TileData t1 = tileList[1];
+
                 ///spawns start
-                if (t.exitDirection == Direction.Left || t.exitDirection == Direction.Right)
+
+                if (t1.exitDirection == Direction.Left || t1.exitDirection == Direction.Right)
                 {
-                    newTile = Instantiate(tile, spawnOrigin, Quaternion.Euler(0, 0, 0), transform);
+                                                    
+
+                    newTile = Instantiate(tile, spawnOrigin, Quaternion.Euler(0, 90, 0), transform);
                 }
                 else
                 {
-                    newTile = Instantiate(tile, spawnOrigin, Quaternion.Euler(0, 90, 0), transform);
+                              
+                    if(t1.exitDirection==Direction.Up)
+                    newTile = Instantiate(tile, spawnOrigin, Quaternion.Euler(0, 180, 0), transform);
+                    else
+                     newTile = Instantiate(tile, spawnOrigin, Quaternion.Euler(0, 0, 0), transform);
+
                 }
-                newTile.transform.position += new Vector3(tileHeight, 0, 0);
+                // newTile.transform.position += new Vector3(tileHeight, 0, 0);
                 firstTile = newTile;
              }else if (i == 1)
                 ///spawns second

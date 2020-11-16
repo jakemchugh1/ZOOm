@@ -27,14 +27,12 @@ public class RacerBehaviorScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-                Debug.Log(GlobalVariables.selectedAnimal);
-
-        Debug.Log((int)GlobalVariables.selectedAnimal);
+     
         Vector3 riderPos = new Vector3(0, 0, 0);
         GameObject animal = Instantiate( animals[(int)GlobalVariables.selectedAnimal], riderPos,  Quaternion.identity,transform);
-        animal.transform.localScale = new Vector3(0.25f, 0.25f, 0.25f);
+        animal.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
         animal.transform.parent = transform;
-        animal.transform.localPosition = new Vector3(0, 0.1f, 0);
+        animal.transform.localPosition = new Vector3(0, 0.6f, 0);
 
         rb = GetComponent<Rigidbody>();
         Direction startingDirection = FindObjectOfType<TileObject>().exitDirection;
