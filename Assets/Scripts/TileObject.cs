@@ -12,16 +12,18 @@ public class TileObject : MonoBehaviour
     public TileObject nextTile;
 
     public int tileIndex;
+
+    public TileNode[] nodes;
     void Start()
     {
-    exitDirection = (Direction)Random.Range(0, 3);        
-
+        exitDirection = (Direction)Random.Range(0, 3);
+        nodes = GetComponentsInChildren<TileNode>();
     }
-
-    // Update is called once per frame
-    void Update()
+    
+    public GameObject getRandomTileNode()
     {
-        
+        if (nodes.Length <= 0) return gameObject;
+        return nodes[Random.Range(0,nodes.Length)].gameObject;
     }
 
 }

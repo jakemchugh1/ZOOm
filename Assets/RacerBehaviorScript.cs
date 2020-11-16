@@ -14,6 +14,7 @@ public class RacerBehaviorScript : MonoBehaviour
     public int maxSpeed;
     public float acceleration;
     public float turn;
+    public GameObject driveTarget;
 
     // Start is called before the first frame update
     void Start()
@@ -55,13 +56,10 @@ public class RacerBehaviorScript : MonoBehaviour
 
     void easyAI()
     {
-        if (checkpoint)
+        if (getNextTile())
         {
-            if (checkpoint.gameObject.GetComponent<TileObject>().nextTile)
-            {
-                accelerate();
-                turnTowards(checkpoint.gameObject.GetComponent<TileObject>().nextTile.gameObject);
-            }
+            accelerate();
+            turnTowards(driveTarget);
         }
     }
 
@@ -134,11 +132,21 @@ public class RacerBehaviorScript : MonoBehaviour
         }
     }
 
+    TileObject getNextTile()
+    {
+        if (checkpoint)
+        {
+            return checkpoint.gameObject.GetComponent<TileObject>().nextTile;
+        }
+        else return null;
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.tag == "Tile")
         {
             checkpoint = collision.gameObject.transform;
+            driveTarget = getNextTile().getRandomTileNode();
         }
     }
 }
