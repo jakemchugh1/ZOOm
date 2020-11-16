@@ -287,6 +287,10 @@ public class RacerBehaviorScript : MonoBehaviour
                 getNextTarget();
                 if (collision.gameObject.GetComponent<TileObject>().tileIndex == 1) lap++;
             }
+            else
+            {
+                wrongWay();
+            }
         }
     }
 }

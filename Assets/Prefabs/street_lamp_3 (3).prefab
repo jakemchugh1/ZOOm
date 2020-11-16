@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1364837033298732474}
   - component: {fileID: 1364837033297635194}
   - component: {fileID: 1364837033309309562}
+  - component: {fileID: 6016367610583854524}
   m_Layer: 0
   m_Name: street_lamp_3 (3)
   m_TagString: Untagged
@@ -101,6 +102,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!64 &6016367610583854524
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1364837033299835322}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 0a4e70f10d5ae9643878997861cd8b80, type: 3}
 --- !u!1 &7094158215888127955
 GameObject:
   m_ObjectHideFlags: 0
