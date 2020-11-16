@@ -13,6 +13,11 @@ public enum Direction
 public class TrackSpawner : MonoBehaviour
 {
     public GameObject tile;
+
+    public GameObject tileIntersect;
+
+    public GameObject tileTurnLR;
+
        
     public int numbOfTiles;
 
@@ -207,11 +212,88 @@ public class TrackSpawner : MonoBehaviour
              }  
              spawnOrigin += spawnPosition;
              GameObject newTile = null;
-            if(t.entryDirection == Direction.Left || t.entryDirection == Direction.Right)
+            if(t.entryDirection!=t.exitDirection&&t.entryDirection!=Direction.Origin){
+              
+               if(t.entryDirection == Direction.Up)
+               {
+                if (t.exitDirection == Direction.Left) {
+                 spawnPosition =  new Vector3(0,0,tileHeight);
+                 spawnOrigin += spawnPosition;
+                 spawnPosition =  new Vector3(tileWidth,0,0);
+                 spawnOrigin += spawnPosition;
+                newTile= Instantiate( tileTurnLR, spawnOrigin,  Quaternion.Euler(0, 270, 0),transform);
+               }else if (t.exitDirection == Direction.Right) {
+                 spawnPosition =  new Vector3(0,0,tileHeight);
+                 spawnOrigin += spawnPosition;
+                 spawnPosition =  new Vector3(-tileWidth,0,0);
+                 spawnOrigin += spawnPosition;
+                newTile= Instantiate( tileTurnLR, spawnOrigin,  Quaternion.Euler(0, 180, 0),transform);
+               }else
+                   newTile= Instantiate( tile, spawnOrigin, Quaternion.identity,transform);
+
+               } 
+               else if(t.entryDirection == Direction.Down)
+               {
+                if (t.exitDirection == Direction.Left) {
+                 spawnPosition =  new Vector3(0,0,tileHeight);
+                 spawnOrigin -= spawnPosition;
+                 spawnPosition =  new Vector3(tileWidth,0,0);
+                 spawnOrigin += spawnPosition;
+                newTile= Instantiate( tileTurnLR, spawnOrigin,  Quaternion.Euler(0, 0, 0),transform);
+               }else if (t.exitDirection == Direction.Right) {
+                 spawnPosition =  new Vector3(0,0,tileHeight);
+                 spawnOrigin -= spawnPosition;
+                 spawnPosition =  new Vector3(-tileWidth,0,0);
+                 spawnOrigin += spawnPosition;
+                newTile= Instantiate( tileTurnLR, spawnOrigin,  Quaternion.Euler(0, 90, 0),transform);
+               }else
+                   newTile= Instantiate( tile, spawnOrigin, Quaternion.identity,transform);
+               } 
+               else if(t.entryDirection == Direction.Left)
+               {
+                if (t.exitDirection == Direction.Up) {
+                 spawnPosition =  new Vector3(0,0,tileHeight);
+                 spawnOrigin -= spawnPosition;
+                 spawnPosition =  new Vector3(tileWidth,0,0);
+                 spawnOrigin -= spawnPosition;
+                newTile= Instantiate( tileTurnLR, spawnOrigin,  Quaternion.Euler(0, 90, 0),transform);
+               }else if (t.exitDirection == Direction.Down) {
+                 spawnPosition =  new Vector3(0,0,tileHeight);
+                 spawnOrigin += spawnPosition;
+                 spawnPosition =  new Vector3(-tileWidth,0,0);
+                 spawnOrigin += spawnPosition;
+                newTile= Instantiate( tileTurnLR, spawnOrigin,  Quaternion.Euler(0, 180, 0),transform);
+               }else
+                   newTile= Instantiate( tile, spawnOrigin, Quaternion.Euler(0, 90, 0),transform);
+               } 
+               else if(t.entryDirection == Direction.Right)
+               {
+                if (t.exitDirection == Direction.Up) {
+                 spawnPosition =  new Vector3(0,0,tileHeight);
+                 spawnOrigin -= spawnPosition;
+                 spawnPosition =  new Vector3(tileWidth,0,0);
+                 spawnOrigin += spawnPosition;
+                newTile= Instantiate( tileTurnLR, spawnOrigin,  Quaternion.Euler(0, 0, 0),transform);
+               }else if (t.exitDirection == Direction.Down) {
+                 spawnPosition =  new Vector3(0,0,tileHeight);
+                 spawnOrigin += spawnPosition;
+                 spawnPosition =  new Vector3(tileWidth,0,0);
+                 spawnOrigin += spawnPosition;
+                newTile= Instantiate( tileTurnLR, spawnOrigin,  Quaternion.Euler(0, 270, 0),transform);
+               }else
+                   newTile= Instantiate( tileIntersect, spawnOrigin, Quaternion.Euler(0, 90, 0),transform);
+               } 
+               else
+                newTile= Instantiate( tileIntersect, spawnOrigin, Quaternion.identity,transform);
+
+            }else{
+                if(t.entryDirection == Direction.Left || t.entryDirection == Direction.Right)
                 newTile= Instantiate( tile, spawnOrigin, Quaternion.Euler(0, 90, 0),transform);
             else
                 newTile= Instantiate( tile, spawnOrigin, Quaternion.identity,transform);
-            newTile.GetComponent<TileObject>().exitDirection = t.exitDirection;
+         
+            }
+             newTile.GetComponent<TileObject>().exitDirection = t.exitDirection;
             
             if(preTile)
                newTile.GetComponent<TileObject>().entryDirection = preTile.GetComponent<TileObject>().exitDirection ;
