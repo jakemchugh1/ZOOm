@@ -18,6 +18,7 @@ public class MapGenerator : MonoBehaviour {
 	[Range(0,1)]
 	public float scalePercent;
 	List<Coord> allTileCoords;
+	private bool isCreating;
 
 	Coord mapCentre;
 	private List<TileData> tileList;
@@ -41,75 +42,77 @@ public class MapGenerator : MonoBehaviour {
 		btnD.onClick.AddListener(backHome);
 		this.tileList = new List<TileData>();
         this.formatter = new BinaryFormatter();
+		isCreating = false;
 		GenerateMap ();
 		
 
 	}
 	void Update(){
-
+		if(isCreating ==false)
+		return;	
 		 if (Input.GetKeyDown(KeyCode.W))
-        {
-			if(this.tileList.Count==1){
-				TileData t0 = this.tileList[0];
-				t0.exitDirection=Direction.Up;
-				this.tileList[0]=t0;
-			}
+        {		
+			
             mapCentre.y +=1;
 			Vector3 tilePosition = CoordToPositionUp(mapCentre.x,mapCentre.y);
 			Transform newTile = Instantiate (obstaclePrefab, tilePosition, Quaternion.identity) as Transform;
 			newTile.localScale = Vector3.one * (scalePercent - outlinePercent);
 			newTile.parent = mapHolder;
-
-			TileData t = new TileData(preTile.exitDirection, Direction.Up);
-            this.tileList.Add(t);
+			TileData t;
+			if(preTile!=null) 
+			t = new TileData(preTile.exitDirection, Direction.Up);
+            else
+			{
+				t = new TileData(Direction.Origin, Direction.Up);
+			}
+			this.tileList.Add(t);
 			preTile = t;
         }
 		if (Input.GetKeyDown(KeyCode.A))
         {
-				if(this.tileList.Count==1){
-				TileData t0 = this.tileList[0];
-				t0.exitDirection=Direction.Left;
-				this.tileList[0]=t0;
-			}
+				
             mapCentre.x -=1;
 			Vector3 tilePosition = CoordToPositionUp(mapCentre.x,mapCentre.y);
 				Transform newTile = Instantiate (obstaclePrefab, tilePosition, Quaternion.identity) as Transform;
 				newTile.localScale = Vector3.one * (scalePercent - outlinePercent);
 				newTile.parent = mapHolder;
-			TileData t = new TileData(preTile.exitDirection, Direction.Left);
+			TileData t;
+			if(preTile!=null)	
+			t = new TileData(preTile.exitDirection, Direction.Left);
+			else
+			t = new TileData(Direction.Origin, Direction.Left);
             this.tileList.Add(t);
 			preTile = t;
         }
 		if (Input.GetKeyDown(KeyCode.S))
         {
-				if(this.tileList.Count==1){
-				TileData t0 = this.tileList[0];
-				t0.exitDirection=Direction.Down;
-				this.tileList[0]=t0;
-			}
+			
             mapCentre.y -=1;
 			Vector3 tilePosition = CoordToPositionUp(mapCentre.x,mapCentre.y);
 				Transform newTile = Instantiate (obstaclePrefab, tilePosition, Quaternion.identity) as Transform;
 				newTile.localScale = Vector3.one * (scalePercent - outlinePercent);
 				newTile.parent = mapHolder;
-			TileData t = new TileData(preTile.exitDirection, Direction.Down);
-            this.tileList.Add(t);
+			TileData t;
+			if(preTile!=null)	
+			t = new TileData(preTile.exitDirection, Direction.Down);
+			else
+			t = new TileData(Direction.Origin, Direction.Down);            this.tileList.Add(t);
 			preTile = t;	
         }
 		if (Input.GetKeyDown(KeyCode.D))
         {
-				if(this.tileList.Count==1){
-				TileData t0 = this.tileList[0];
-				t0.exitDirection=Direction.Right;
-				this.tileList[0]=t0;
-			}
+				
             mapCentre.x +=1;
 			Vector3 tilePosition = CoordToPositionUp(mapCentre.x,mapCentre.y);
 				Transform newTile = Instantiate (obstaclePrefab, tilePosition, Quaternion.identity) as Transform;
 				newTile.localScale = Vector3.one * (scalePercent - outlinePercent);
 				newTile.parent = mapHolder;
-			TileData t = new TileData(preTile.exitDirection, Direction.Right);
-            this.tileList.Add(t);
+			TileData t;
+			if(preTile!=null)	
+			t = new TileData(preTile.exitDirection, Direction.Right);
+			else
+			t = new TileData(Direction.Origin, Direction.Right);            
+			this.tileList.Add(t);
 			preTile = t;	
         }
 
@@ -183,7 +186,7 @@ public class MapGenerator : MonoBehaviour {
 	}
 	public void LoadData() 
     {
-      
+        isCreating = false;
 		resetTrack();
         if (File.Exists("Track"))
         {
@@ -211,6 +214,8 @@ public class MapGenerator : MonoBehaviour {
     } 
 
 	public void resetTrack(){
+		        isCreating = false;
+
 		 GameObject[] tiles = GameObject.FindGameObjectsWithTag("Tile");
          for(int i=0; i< tiles.Length; i++)
          {
@@ -222,18 +227,22 @@ public class MapGenerator : MonoBehaviour {
 	} 
 	 
 	 public void createTrack(){
+		 preTile = null;
 		resetTrack();
-		mapCentre = new Coord ((int)mapSize.x/2 , 0);
-		Vector3 tilePosition = CoordToPositionUp(mapCentre.x,mapCentre.y);
-				Transform newTile = Instantiate (obstaclePrefab, tilePosition, Quaternion.identity) as Transform;
-				newTile.localScale = Vector3.one * (scalePercent - outlinePercent);
-				newTile.parent = mapHolder;
-		preTile =   new TileData(Direction.Origin, Direction.Origin);
-		tileList.Add(preTile);
+		        isCreating = true;
+
+		mapCentre = new Coord ((int)mapSize.x/2 , -1);
+		// Vector3 tilePosition = CoordToPositionUp(mapCentre.x,mapCentre.y);
+		// 		Transform newTile = Instantiate (obstaclePrefab, tilePosition, Quaternion.identity) as Transform;
+		// 		newTile.localScale = Vector3.one * (scalePercent - outlinePercent);
+		// 		newTile.parent = mapHolder;
+		// preTile =   new TileData(Direction.Origin, Direction.Origin);
+		// tileList.Add(preTile);
 		
 	 }
 
 	 public void saveTrack(){
+		         isCreating = false;
 		 try
         {
             // Create a FileStream that will write data to file.
