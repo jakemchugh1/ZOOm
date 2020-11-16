@@ -20,6 +20,8 @@ public class RacerBehaviorScript : MonoBehaviour
     public float easySteerTolerance;
     public float mediumSteerTolerance;
     public float hardSteerTolerance;
+
+    public int lap;
     // Start is called before the first frame update
     void Start()
     {
@@ -258,20 +260,33 @@ public class RacerBehaviorScript : MonoBehaviour
                 driveTarget = getNextTile().getRandomTileNode();
                 break;
             case (2):
-                driveTarget = getNextTile().getNearestTile(transform.position);
+                driveTarget = getNextTile().getNearestTileNode(transform.position);
                 break;
             case (3):
                 driveTarget = getNextTile().getRandomTileNode();
                 break;
         }
     }
+    void wrongWay()
+    {
+        Debug.Log("Wrong Way!");
+    }
 
     private void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.tag == "Tile")
         {
-            checkpoint = collision.gameObject.transform;
-            getNextTarget();
+            if(checkpoint == null)
+            {
+                checkpoint = collision.gameObject.transform;
+                getNextTarget();
+            }
+            else if (collision.gameObject.GetComponent<TileObject>() == getNextTile())
+            {
+                checkpoint = collision.gameObject.transform;
+                getNextTarget();
+                if (collision.gameObject.GetComponent<TileObject>().tileIndex == 1) lap++;
+            }
         }
     }
 }

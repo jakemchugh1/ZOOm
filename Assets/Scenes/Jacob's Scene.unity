@@ -176,11 +176,12 @@ MonoBehaviour:
   currentSpeed: 0
   maxSpeed: 2
   acceleration: 0.5
-  turn: 0.1
+  turn: 0.15
   driveTarget: {fileID: 0}
   easySteerTolerance: 0.1
   mediumSteerTolerance: 0.05
   hardSteerTolerance: 0.02
+  lap: 0
 --- !u!65 &331421337
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -298,7 +299,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 446945532}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.025, z: 0}
   m_LocalScale: {x: 100, y: 1, z: 100}
   m_Children: []
   m_Father: {fileID: 0}
@@ -816,7 +817,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9aa916096ab64b01b2036340880cf93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tile: {fileID: 996054852672454076, guid: 52c809dfc81b1409b877ad68ed73c1a2, type: 3}
+  tile: {fileID: 5201363242625863144, guid: f7104a0230102c9478b80c73b7184c97, type: 3}
   tileIntersect: {fileID: 363217989434884438, guid: ed2839ed15c9e40b1ab4c32a19783b47,
     type: 3}
   tileTurnLR: {fileID: 1900494688121517765, guid: 9c4d29da0671449568caee60938cc826,
@@ -827,6 +828,18 @@ MonoBehaviour:
   spawnPosition: {x: 0, y: 0, z: 0}
   tileWidth: 3
   tileHeight: 3
+  straights:
+  - {fileID: 5201363242625863144, guid: f7104a0230102c9478b80c73b7184c97, type: 3}
+  - {fileID: 7517016762791969086, guid: beae020985002f049b6af1f596953404, type: 3}
+  - {fileID: 1335862176154179993, guid: 49d6be0ae21486a44ab8ee8027e614f8, type: 3}
+  - {fileID: 5672802968346131644, guid: 3bca0cbfbc32eff4897dec3512b85888, type: 3}
+  - {fileID: 1975764349185265623, guid: ae1762ceb129f3b40bdb014facd2f5c7, type: 3}
+  corners:
+  - {fileID: 1355467244499492747, guid: 9c4d29da0671449568caee60938cc826, type: 3}
+  - {fileID: 727797244050475608, guid: c3eeaaca5c7bd4f40a2f95e1b6dfe776, type: 3}
+  - {fileID: 8261421782009774445, guid: 767e31a64a7c6694490dcac696698ef7, type: 3}
+  - {fileID: 4736834370199759738, guid: 6258c05bee7f70849b4e5d232522aa56, type: 3}
+  - {fileID: 4278024853783922894, guid: 4c06ca8aafd7abe4bafd46f1e77d6b48, type: 3}
 --- !u!114 &1689208123
 MonoBehaviour:
   m_ObjectHideFlags: 0
