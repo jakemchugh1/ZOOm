@@ -150,6 +150,7 @@ public class MapGenerator : MonoBehaviour {
 	}
 
 	public void drawTiles(){
+  		mapCentre = new Coord ((int)mapSize.x / 2, 0);
 		for (int i = 0; i<this.tileList.Count; i++){
         TileData t = tileList[i];
 
@@ -216,6 +217,8 @@ public class MapGenerator : MonoBehaviour {
              Destroy(tiles[i]);
          }
 		 tileList.Clear();
+		 mapCentre = new Coord ((int)mapSize.x / 2, 0);
+
 	} 
 	 
 	 public void createTrack(){
