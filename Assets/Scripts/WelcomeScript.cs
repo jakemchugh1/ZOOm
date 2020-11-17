@@ -13,6 +13,9 @@ public class WelcomeScript : MonoBehaviour
     public Button startBtn;
     public Toggle toggleBear, toggleMonkey, togglePenguin, toggleRabbit;
     public Toggle toggleTrack1, toggleTrack2 , toggleTrack3, toggleTrackCustom;
+    public Dropdown difficulty;
+
+    
 
     // Start is called before the first frame update
     void Start()
@@ -58,7 +61,7 @@ public class WelcomeScript : MonoBehaviour
        if(tc.isOn){
        GlobalVariables.selectedFile = "Track";
        
-       SceneManager.LoadScene(2);
+       SceneManager.LoadScene(1);
        }else{
        if(t1.isOn)
        GlobalVariables.selectedFile = "Track1";
@@ -67,7 +70,7 @@ public class WelcomeScript : MonoBehaviour
        else if(t3.isOn)
        GlobalVariables.selectedFile = "Track3";
 
-       SceneManager.LoadScene(1);
+       SceneManager.LoadScene(2);
        }
 
 

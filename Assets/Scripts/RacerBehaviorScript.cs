@@ -11,7 +11,7 @@ public class RacerBehaviorScript : MonoBehaviour
 
     public int behavior;
     public float currentSpeed;
-    public int maxSpeed;
+    public float maxSpeed;
     public float acceleration;
     public float turn;
     public GameObject driveTarget;
@@ -27,9 +27,33 @@ public class RacerBehaviorScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-     
+        int selectAnimal;
+        if(behavior == 0)
+        {
+            selectAnimal = (int)GlobalVariables.selectedAnimal;
+            setStats(GlobalVariables.selectedAnimal);
+        }
+        else
+        {
+            selectAnimal = Random.Range(0, 3);
+            switch (selectAnimal)
+            {
+                case (0):
+                    setStats(Animal.Bear);
+                    break;
+                case (1):
+                    setStats(Animal.Monkey);
+                    break;
+                case (2):
+                    setStats(Animal.Penguin);
+                    break;
+                case (3):
+                    setStats(Animal.Rabbit);
+                    break;
+            }
+        }
         Vector3 riderPos = new Vector3(0, 0, 0);
-        GameObject animal = Instantiate( animals[(int)GlobalVariables.selectedAnimal], riderPos,  Quaternion.identity,transform);
+        GameObject animal = Instantiate( animals[selectAnimal], riderPos,  Quaternion.identity,transform);
         animal.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
         animal.transform.parent = transform;
         animal.transform.localPosition = new Vector3(0, 0.6f, 0);
@@ -49,6 +73,34 @@ public class RacerBehaviorScript : MonoBehaviour
                 break;
             case (Direction.Down):
                 transform.rotation = Quaternion.Euler(0, 180, 0);
+                break;
+        }
+    }
+
+    void setStats(Animal animal)
+    {
+        
+        switch (animal)
+        {
+            case (Animal.Bear):
+                maxSpeed = 2.5f;
+                acceleration = 0.5f;
+                turn = 0.2f;
+                break;
+            case (Animal.Monkey):
+                maxSpeed = 2f;
+                acceleration = 0.5f;
+                turn = 0.25f;
+                break;
+            case (Animal.Penguin):
+                maxSpeed = 2f;
+                acceleration = 1f;
+                turn = 0.2f;
+                break;
+            case (Animal.Rabbit):
+                maxSpeed = 3f;
+                acceleration = 0.75f;
+                turn = 0.18f;
                 break;
         }
     }
@@ -282,7 +334,7 @@ public class RacerBehaviorScript : MonoBehaviour
     }
     void wrongWay()
     {
-        Debug.Log("Wrong Way!");
+        //Debug.Log("Wrong Way!");
     }
 
     private void OnCollisionEnter(Collision collision)
