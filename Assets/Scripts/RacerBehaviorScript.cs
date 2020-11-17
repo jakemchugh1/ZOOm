@@ -30,6 +30,31 @@ public class RacerBehaviorScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+         GameObject car = transform.Find("Kart").gameObject;
+        if(car){
+             var carRenderer = car.GetComponent<Renderer>();
+            //  carRenderer.material.SetColor("_Color", Color.blue);
+            switch (GlobalVariables.selectedCar)
+            {
+                case(CarColor.Red):
+                carRenderer.material.SetColor("_BaseColor", Color.red);
+                break;
+                case(CarColor.Blue):
+                carRenderer.material.SetColor("_BaseColor", Color.blue);
+                break;
+                case(CarColor.Green):
+                carRenderer.material.SetColor("_BaseColor", Color.green);
+                break;
+                case(CarColor.Yellow):
+                carRenderer.material.SetColor("_BaseColor", Color.yellow);
+                break;
+                default:
+                carRenderer.material.SetColor("_BaseColor", Color.red);
+                break;
+            }
+
+
+        }
         StartCoroutine(Countdown());
         //maxSpeed = 2;
         int selectAnimal;

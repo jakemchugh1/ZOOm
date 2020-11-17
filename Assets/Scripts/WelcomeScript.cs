@@ -11,7 +11,7 @@ public enum Animal
 }  
 public enum CarColor
 {
-    Red, Green, Blue, Purple
+    Red, Green, Blue, Yellow
 }    
 public class WelcomeScript : MonoBehaviour
 {
@@ -83,8 +83,8 @@ public class WelcomeScript : MonoBehaviour
             GlobalVariables.selectedCar = CarColor.Blue;
             break; 
             case(3):
-            carLbl.text = "Purple";
-            GlobalVariables.selectedCar = CarColor.Purple;
+            carLbl.text = "Yellow";
+            GlobalVariables.selectedCar = CarColor.Yellow;
             break;
             default:
             break;
