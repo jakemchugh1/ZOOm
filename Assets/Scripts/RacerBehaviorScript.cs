@@ -36,6 +36,7 @@ public class RacerBehaviorScript : MonoBehaviour
         }
         else
         {
+            behavior = GlobalVariables.aiDifficulty;
             selectAnimal = Random.Range(0, 3);
             switch (selectAnimal)
             {
@@ -187,7 +188,14 @@ public class RacerBehaviorScript : MonoBehaviour
 
     void hardAI()
     {
+        if (getNextTile())
+        {
 
+            steer(hardSteerTolerance);
+            accelerate();
+            moveForward();
+            //turnTowards(driveTarget);
+        }
     }
 
     void accelerate()
