@@ -7,12 +7,11 @@ public class TileNode : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+     if(Random.Range(0,9) == 1)
+        {
+            Instantiate(FindObjectOfType<TrackSpawner>().milk, transform.position, FindObjectOfType<TrackSpawner>().milk.transform.rotation, transform);
+        }   
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }
