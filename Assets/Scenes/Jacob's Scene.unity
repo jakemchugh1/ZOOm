@@ -2578,7 +2578,7 @@ MonoBehaviour:
   - {fileID: 8261421782009774445, guid: 767e31a64a7c6694490dcac696698ef7, type: 3}
   - {fileID: 4736834370199759738, guid: 6258c05bee7f70849b4e5d232522aa56, type: 3}
   - {fileID: 4278024853783922894, guid: 4c06ca8aafd7abe4bafd46f1e77d6b48, type: 3}
-  milk: {fileID: 0}
+  milk: {fileID: 5996348186748665620, guid: 9b01cbf0c7f4ef34b93d8630f8ac9386, type: 3}
 --- !u!114 &1689208123
 MonoBehaviour:
   m_ObjectHideFlags: 0
