@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI.Extensions;
 
 public enum Animal
 {
@@ -11,6 +12,9 @@ public enum Animal
 public class WelcomeScript : MonoBehaviour
 {
     public Button startBtn;
+    public ScrollSnap hss;
+    public Text animalLbl;
+
     public Toggle toggleBear, toggleMonkey, togglePenguin, toggleRabbit;
     public Toggle toggleTrack1, toggleTrack2 , toggleTrack3, toggleTrackCustom;
     public Dropdown difficulty;
@@ -28,16 +32,41 @@ public class WelcomeScript : MonoBehaviour
         m_Toggle.onValueChanged.AddListener(delegate {
             ToggleValueChanged(m_Toggle);
         });
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        ScrollSnap s = hss.GetComponent<ScrollSnap>();
+        Debug.Log(s.CurrentPage());
+        switch (s.CurrentPage())
+        {
+            case(0):
+            animalLbl.text = "Bear";
+            GlobalVariables.selectedAnimal = Animal.Bear;
+            break;
+            case(1):
+            animalLbl.text = "Monkey";
+            GlobalVariables.selectedAnimal = Animal.Monkey;
+            break; 
+            case(2):
+            animalLbl.text = "Penguin";
+            GlobalVariables.selectedAnimal = Animal.Penguin;
+            break; 
+            case(3):
+            animalLbl.text = "Rabbit";
+            GlobalVariables.selectedAnimal = Animal.Rabbit;
+            break;
+            default:
+            break;
+        }
+
     }
 
     void startedClick()
     {
+
        // Select Animal
        Toggle a1 = toggleBear.GetComponent<Toggle>();
        Toggle a2 = toggleMonkey.GetComponent<Toggle>();
