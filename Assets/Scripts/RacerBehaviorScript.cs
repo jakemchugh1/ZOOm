@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RacerBehaviorScript : MonoBehaviour
 {
@@ -24,9 +25,12 @@ public class RacerBehaviorScript : MonoBehaviour
     public List<GameObject> animals;
 
     public int lap;
+
+    bool started = false;
     // Start is called before the first frame update
     void Start()
     {
+        StartCoroutine(Countdown());
         //maxSpeed = 2;
         int selectAnimal;
         if(behavior == 0)
@@ -110,6 +114,7 @@ public class RacerBehaviorScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!started) return;
         if (hovering) freeze();
         else runBehavior();
         returnToTrack();
@@ -366,5 +371,11 @@ public class RacerBehaviorScript : MonoBehaviour
                 wrongWay();
             }
         }
+    }
+
+    IEnumerator Countdown()
+    {
+        yield return new WaitForSeconds(4f);
+        started = true;
     }
 }
