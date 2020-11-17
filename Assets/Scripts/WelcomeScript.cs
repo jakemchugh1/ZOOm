@@ -32,7 +32,7 @@ public class WelcomeScript : MonoBehaviour
         m_Toggle.onValueChanged.AddListener(delegate {
             ToggleValueChanged(m_Toggle);
         });
-
+        difficulty = FindObjectOfType<Dropdown>();
     }
 
     // Update is called once per frame
@@ -66,7 +66,7 @@ public class WelcomeScript : MonoBehaviour
 
     void startedClick()
     {
-
+       GlobalVariables.aiDifficulty = difficulty.value + 1;
        // Select Animal
        Toggle a1 = toggleBear.GetComponent<Toggle>();
        Toggle a2 = toggleMonkey.GetComponent<Toggle>();

@@ -27,6 +27,7 @@ public class RacerBehaviorScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //maxSpeed = 2;
         int selectAnimal;
         if(behavior == 0)
         {
