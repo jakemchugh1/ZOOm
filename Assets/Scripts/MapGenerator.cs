@@ -266,7 +266,7 @@ public class MapGenerator : MonoBehaviour {
 
 
 	 public void backHome(){
-		 SceneManager.LoadScene(1);
+		 SceneManager.LoadScene(2);
 	 }
 
 	Vector3 CoordToPosition(int x, int y) {

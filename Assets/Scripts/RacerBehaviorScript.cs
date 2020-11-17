@@ -34,18 +34,27 @@ public class RacerBehaviorScript : MonoBehaviour
         if(car){
              var carRenderer = car.GetComponent<Renderer>();
             //  carRenderer.material.SetColor("_Color", Color.blue);
-            switch (GlobalVariables.selectedCar)
+            int colorIndex;
+            if(behavior == 0)
             {
-                case(CarColor.Red):
+                colorIndex = (int)GlobalVariables.selectedCar;
+            }
+            else
+            {
+                colorIndex = Random.Range(0, 4);
+            }
+            switch (colorIndex)
+            {
+                case(0):
                 carRenderer.material.SetColor("_BaseColor", Color.red);
                 break;
-                case(CarColor.Blue):
+                case(1):
                 carRenderer.material.SetColor("_BaseColor", Color.blue);
                 break;
-                case(CarColor.Green):
+                case(2):
                 carRenderer.material.SetColor("_BaseColor", Color.green);
                 break;
-                case(CarColor.Yellow):
+                case(3):
                 carRenderer.material.SetColor("_BaseColor", Color.yellow);
                 break;
                 default:
@@ -233,6 +242,9 @@ public class RacerBehaviorScript : MonoBehaviour
         if(currentSpeed < maxSpeed)
         {
             currentSpeed += acceleration * Time.deltaTime;
+        }else if(currentSpeed > maxSpeed * 1.5f)
+        {
+            currentSpeed = maxSpeed * 1.5f;
         }
         else
         {
