@@ -8,12 +8,18 @@ using UnityEngine.UI.Extensions;
 public enum Animal
 {
     Bear, Monkey, Penguin, Rabbit
+}  
+public enum CarColor
+{
+    Red, Green, Blue, Purple
 }    
 public class WelcomeScript : MonoBehaviour
 {
     public Button startBtn;
     public ScrollSnap hss;
+    public ScrollSnap carhss;
     public Text animalLbl;
+    public Text carLbl;
 
     public Toggle toggleBear, toggleMonkey, togglePenguin, toggleRabbit;
     public Toggle toggleTrack1, toggleTrack2 , toggleTrack3, toggleTrackCustom;
@@ -57,6 +63,28 @@ public class WelcomeScript : MonoBehaviour
             case(3):
             animalLbl.text = "Rabbit";
             GlobalVariables.selectedAnimal = Animal.Rabbit;
+            break;
+            default:
+            break;
+        }
+        ScrollSnap c = carhss.GetComponent<ScrollSnap>();
+        switch (c.CurrentPage())
+        {
+            case(0):
+            carLbl.text = "Red";
+            GlobalVariables.selectedCar = CarColor.Red;
+            break;
+            case(1):
+            carLbl.text = "Green";
+            GlobalVariables.selectedCar = CarColor.Green;
+            break; 
+            case(2):
+            carLbl.text = "Blue";
+            GlobalVariables.selectedCar = CarColor.Blue;
+            break; 
+            case(3):
+            carLbl.text = "Purple";
+            GlobalVariables.selectedCar = CarColor.Purple;
             break;
             default:
             break;
