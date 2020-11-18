@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using System.IO;
+//using System.IO;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
+
 public enum Direction
 {
     Left, Right, Up, Down, Origin
@@ -50,7 +51,7 @@ public class TrackSpawner : MonoBehaviour
         this.tileList = new List<TileData>();
         this.formatter = new BinaryFormatter();
         // spawnTiles();
-        LoadData();
+        LoadDataFromWeb();
 
         // racers = FindObjectsOfType<NavMeshAgent>();
 
@@ -128,19 +129,19 @@ public class TrackSpawner : MonoBehaviour
         try
         {
             // Create a FileStream that will write data to file.
-            FileStream writerFileStream = 
-                new FileStream(GlobalVariables.selectedFile, FileMode.Create, FileAccess.Write);
+           // FileStream writerFileStream = 
+           //     new FileStream(GlobalVariables.selectedFile, FileMode.Create, FileAccess.Write);
             // Save our dictionary of friends to file
-            this.formatter.Serialize(writerFileStream, this.tileList);
+           // this.formatter.Serialize(writerFileStream, this.tileList);
  
             // Close the writerFileStream when we are done.
-            writerFileStream.Close();
+           // writerFileStream.Close();
         }
         catch (System.Exception e) {
             Debug.Log(e);
         } // end try-catch
     }
-    public void LoadData() 
+    /*public void LoadData() 
     {
       
         // Check if we had previously Save information of our friends
@@ -171,6 +172,58 @@ public class TrackSpawner : MonoBehaviour
         loadTiles();
          
     } // end public bool Load()
+    */
+    public void LoadDataFromWeb()
+    {
+
+        // Check if we had previously Save information of our friends
+        // previously
+
+
+        Debug.Log("Trying to get track from web");
+        Debug.Log(GlobalVariables.selectedFile);
+        byte[] file = getFileFromURL(GlobalVariables.selectedFile);
+        if (file != null)
+        {
+            Debug.Log("Using file");
+            try
+            {
+                //System.IO.Stream stream = new System.IO.MemoryStream(file);
+                // Create a FileStream will gain read access to the 
+                // data file.
+                // Reconstruct information of our friends from file.
+                UnityEngine.Networking.UnityWebRequest www = new UnityEngine.Networking.UnityWebRequest("hello");
+                System.IO.MemoryStream stream = new System.IO.MemoryStream(file);
+                this.tileList = (List<TileData>)this.formatter.Deserialize(stream);
+                stream.Close();
+            }
+            catch (System.Exception e)
+            {
+                Debug.Log(e);
+            } // end try-catch
+
+        } // end if
+
+        loadTiles();
+
+    } // end public bool Load()
+
+    public byte[] getFileFromURL(string url)
+    {
+        Debug.Log("Instantiating UnityWebRequest");
+        UnityEngine.Networking.UnityWebRequest www = new UnityEngine.Networking.UnityWebRequest(url);
+        Debug.Log("Instantiating Download handler");
+        www.downloadHandler = new UnityEngine.Networking.DownloadHandlerBuffer();
+        Debug.Log("Sending web request");
+        www.SendWebRequest();
+        Debug.Log("RequestSent to: "+GlobalVariables.selectedFile);
+        while (!www.isDone)
+        {
+            //waiting for download to complete
+
+        }
+        return www.downloadHandler.data; 
+    }
     void loadTiles()
     {
         GameObject firstTile = null;

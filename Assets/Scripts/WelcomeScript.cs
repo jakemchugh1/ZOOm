@@ -45,7 +45,7 @@ public class WelcomeScript : MonoBehaviour
     void Update()
     {
         ScrollSnap s = hss.GetComponent<ScrollSnap>();
-        Debug.Log(s.CurrentPage());
+        //Debug.Log(s.CurrentPage());
         switch (s.CurrentPage())
         {
             case(0):
@@ -116,16 +116,16 @@ public class WelcomeScript : MonoBehaviour
        Toggle tc = toggleTrackCustom.GetComponent<Toggle>();
 
        if(tc.isOn){
-       GlobalVariables.selectedFile = "Track";
+       GlobalVariables.selectedFile = "https://jakemchugh1.github.io/ZOOm-firstDemo/Track";
        
        SceneManager.LoadScene(1);
        }else{
        if(t1.isOn)
-       GlobalVariables.selectedFile = "Track1";
+       GlobalVariables.selectedFile = "https://jakemchugh1.github.io/ZOOm-firstDemo/Track1";
        else if(t2.isOn)
-       GlobalVariables.selectedFile = "Track2";
+       GlobalVariables.selectedFile = "https://jakemchugh1.github.io/ZOOm-firstDemo/Track2";
        else if(t3.isOn)
-       GlobalVariables.selectedFile = "Track3";
+       GlobalVariables.selectedFile = "https://jakemchugh1.github.io/ZOOm-firstDemo/Track3";
 
        SceneManager.LoadScene(2);
        }
@@ -136,7 +136,7 @@ public class WelcomeScript : MonoBehaviour
 
     void ToggleValueChanged(Toggle t){
         if(t.isOn){
-            GlobalVariables.selectedFile = "Track";
+            GlobalVariables.selectedFile = "Resources/Track";
         }
     }
 }

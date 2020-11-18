@@ -49,10 +49,10 @@ public class RacerBehaviorScript : MonoBehaviour
                 carRenderer.material.SetColor("_BaseColor", Color.red);
                 break;
                 case(1):
-                carRenderer.material.SetColor("_BaseColor", Color.blue);
+                carRenderer.material.SetColor("_BaseColor", Color.green);
                 break;
                 case(2):
-                carRenderer.material.SetColor("_BaseColor", Color.green);
+                carRenderer.material.SetColor("_BaseColor", Color.blue);
                 break;
                 case(3):
                 carRenderer.material.SetColor("_BaseColor", Color.yellow);
