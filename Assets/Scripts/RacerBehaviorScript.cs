@@ -146,7 +146,7 @@ public class RacerBehaviorScript : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (!started) return;
         if (hovering) freeze();
@@ -180,11 +180,11 @@ public class RacerBehaviorScript : MonoBehaviour
         {
             accelerate();
         }
-        else
-        {
-            brake();
-        }
         if (Input.GetKey(KeyCode.S))
+        {
+            reverse();
+        }
+        if(!Input.GetKey(KeyCode.S) && !Input.GetKey(KeyCode.W))
         {
             brake();
         }
@@ -260,10 +260,28 @@ public class RacerBehaviorScript : MonoBehaviour
 
     void brake()
     {
-        currentSpeed -= acceleration * Time.deltaTime;
-        if (currentSpeed < 0)
+        if(currentSpeed > 0)
+        {
+            currentSpeed -= acceleration * Time.deltaTime;
+        }
+        else
+        {
+            currentSpeed += acceleration * Time.deltaTime;
+        }
+        
+        if (currentSpeed < 0.15 && currentSpeed >-0.15)
         {
             currentSpeed = 0;
+        }
+        
+    }
+
+    void reverse()
+    {
+        currentSpeed -= acceleration * Time.deltaTime;
+        if (currentSpeed < -maxSpeed/3)
+        {
+            currentSpeed = -maxSpeed / 3;
         }
         
     }
@@ -332,11 +350,28 @@ public class RacerBehaviorScript : MonoBehaviour
     void returnToTrack()
     {
 
-        if (transform.position.y < -10)
+        if (transform.position.y < -10 || Vector3.Dot(transform.up, Vector3.up) <0)
         {
             transform.position = new Vector3(checkpoint.position.x, 1, checkpoint.position.z);
-            transform.rotation = checkpoint.rotation;
+
+            Direction startingDirection = checkpoint.GetComponent<TileObject>().exitDirection;
+            switch (startingDirection)
+            {
+                case (Direction.Left):
+                    transform.rotation = Quaternion.Euler(0, -90, 0);
+                    break;
+                case (Direction.Right):
+                    transform.rotation = Quaternion.Euler(0, 90, 0);
+                    break;
+                case (Direction.Up):
+                    transform.rotation = Quaternion.Euler(0, 0, 0);
+                    break;
+                case (Direction.Down):
+                    transform.rotation = Quaternion.Euler(0, 180, 0);
+                    break;
+            }
             currentSpeed = 0;
+            timer = 0;
             hovering = true;
         }
     }
