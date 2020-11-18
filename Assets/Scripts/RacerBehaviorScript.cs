@@ -24,12 +24,17 @@ public class RacerBehaviorScript : MonoBehaviour
 
     public List<GameObject> animals;
 
+    public Camera cam;
+
     public int lap;
+
+    public float camOffset;
 
     bool started = false;
     // Start is called before the first frame update
     void Start()
     {
+        cam = FindObjectOfType<Camera>();
          GameObject car = transform.Find("Kart").gameObject;
         if(car){
              var carRenderer = car.GetComponent<Renderer>();
@@ -61,7 +66,7 @@ public class RacerBehaviorScript : MonoBehaviour
                 carRenderer.material.SetColor("_BaseColor", Color.white);
                 break;
             }
-
+            setCamera();
 
         }
         StartCoroutine(Countdown());
@@ -148,6 +153,7 @@ public class RacerBehaviorScript : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (behavior == 0) setCamera();
         if (!started) return;
         if (hovering) freeze();
         else runBehavior();
@@ -198,7 +204,14 @@ public class RacerBehaviorScript : MonoBehaviour
         }
         moveForward();
         
+        
 
+    }
+
+    void setCamera()
+    {
+        cam.transform.position = transform.position - (new Vector3(transform.forward.x, -0.25f, transform.forward.z) * camOffset);
+        cam.transform.LookAt(transform.position + new Vector3(0, camOffset / 3, 0));
     }
 
     void easyAI()
