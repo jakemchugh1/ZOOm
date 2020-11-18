@@ -185,7 +185,7 @@ public class TrackSpawner : MonoBehaviour
         byte[] file = getFileFromURL(GlobalVariables.selectedFile);
         if (file != null)
         {
-            Debug.Log("Using file");
+            //Debug.Log("Using file");
             try
             {
                 //System.IO.Stream stream = new System.IO.MemoryStream(file);
@@ -222,6 +222,7 @@ public class TrackSpawner : MonoBehaviour
             //waiting for download to complete
 
         }
+        Debug.Log("Track downloaded in: " + www.downloadedBytes + "bytes");
         return www.downloadHandler.data; 
     }
     void loadTiles()
@@ -230,7 +231,7 @@ public class TrackSpawner : MonoBehaviour
         GameObject lastTile = null;
         for(int i = 0; i < tileList.Count; i++){  
             TileData t = tileList[i];
-                            Debug.Log(t.entryDirection); 
+                            //Debug.Log(t.entryDirection); 
 
              switch (t.entryDirection)
              {
