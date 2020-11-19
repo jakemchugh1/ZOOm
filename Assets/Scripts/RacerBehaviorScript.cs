@@ -367,22 +367,7 @@ public class RacerBehaviorScript : MonoBehaviour
         {
             transform.position = new Vector3(checkpoint.position.x, 1, checkpoint.position.z);
 
-            Direction startingDirection = checkpoint.GetComponent<TileObject>().exitDirection;
-            switch (startingDirection)
-            {
-                case (Direction.Left):
-                    transform.rotation = Quaternion.Euler(0, -90, 0);
-                    break;
-                case (Direction.Right):
-                    transform.rotation = Quaternion.Euler(0, 90, 0);
-                    break;
-                case (Direction.Up):
-                    transform.rotation = Quaternion.Euler(0, 0, 0);
-                    break;
-                case (Direction.Down):
-                    transform.rotation = Quaternion.Euler(0, 180, 0);
-                    break;
-            }
+            transform.LookAt(checkpoint.GetComponent<TileObject>().nextTile.transform.position);
             currentSpeed = 0;
             timer = 0;
             hovering = true;
