@@ -319,6 +319,10 @@ MonoBehaviour:
   cam: {fileID: 0}
   lap: 0
   camOffset: 0.75
+  trashcollect: 0
+  trashbag: {fileID: 5915174320805705592, guid: d91188e8467184948bf7f05358b6eedf,
+    type: 3}
+  gotHit: 0
 --- !u!65 &331421337
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1137,6 +1141,9 @@ MonoBehaviour:
   cam: {fileID: 0}
   lap: 0
   camOffset: 0
+  trashcollect: 0
+  trashbag: {fileID: 0}
+  gotHit: 0
 --- !u!65 &689943079
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1924,6 +1931,9 @@ MonoBehaviour:
   cam: {fileID: 0}
   lap: 0
   camOffset: 0
+  trashcollect: 0
+  trashbag: {fileID: 0}
+  gotHit: 0
 --- !u!65 &1344621820
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2213,6 +2223,9 @@ MonoBehaviour:
   cam: {fileID: 0}
   lap: 0
   camOffset: 0
+  trashcollect: 0
+  trashbag: {fileID: 0}
+  gotHit: 0
 --- !u!65 &1418215697
 BoxCollider:
   m_ObjectHideFlags: 0
