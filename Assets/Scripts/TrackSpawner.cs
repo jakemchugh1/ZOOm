@@ -42,7 +42,7 @@ public class TrackSpawner : MonoBehaviour
     public List<GameObject> straights;
     public List<GameObject> corners;
     public GameObject milk;
-
+    public GameObject trashcan;
 
     // Start is called before the first frame update
     void Awake()

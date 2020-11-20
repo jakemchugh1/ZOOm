@@ -31,12 +31,16 @@ public class RacerBehaviorScript : MonoBehaviour
     public float camOffset;
 
     bool started = false;
+
+    public bool trashcollect = false;
+    public GameObject trashbag;
+    public bool gotHit = false;
     // Start is called before the first frame update
     void Start()
     {
         cam = FindObjectOfType<Camera>();
          GameObject car = transform.Find("Kart").gameObject;
-        if(car){
+        if (car){
              var carRenderer = car.GetComponent<Renderer>();
             //  carRenderer.material.SetColor("_Color", Color.blue);
             int colorIndex;
@@ -153,11 +157,25 @@ public class RacerBehaviorScript : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (behavior == 0) setCamera();
+        if (behavior == 0)
+        {
+            setCamera();
+            throwTrash();
+        }
         if (!started) return;
         if (hovering) freeze();
         else runBehavior();
         returnToTrack();
+        if (gotHit)
+        {
+            transform.position = new Vector3(checkpoint.position.x, 1, checkpoint.position.z);
+            transform.LookAt(checkpoint.GetComponent<TileObject>().nextTile.transform.position);
+            currentSpeed = 0;
+            timer = 0;
+            hovering = true;
+            gotHit = false;
+        }
+
     }
 
     void runBehavior()
@@ -447,5 +465,19 @@ public class RacerBehaviorScript : MonoBehaviour
     {
         yield return new WaitForSeconds(4f);
         started = true;
+    }
+
+    void throwTrash()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (trashcollect)
+            {
+                trashbag = Instantiate(trashbag);
+                trashbag.transform.position = new Vector3(transform.position.x, 0.02f, transform.position.z);
+                trashbag.transform.forward = transform.forward* currentSpeed *Time.deltaTime;
+                trashcollect = false;
+            }
+        }
     }
 }
