@@ -35,9 +35,12 @@ public class RacerBehaviorScript : MonoBehaviour
     public bool trashcollect = false;
     public GameObject trashbag;
     public bool gotHit = false;
+
+    DirectionIndicator directionIndicator;
     // Start is called before the first frame update
     void Start()
     {
+        directionIndicator = FindObjectOfType<DirectionIndicator>();
        // cam = FindObjectOfType<Camera>();
          GameObject car = transform.Find("Kart").gameObject;
         if (car){
@@ -443,6 +446,15 @@ public class RacerBehaviorScript : MonoBehaviour
     {
         if(collision.gameObject.tag == "Tile")
         {
+            ///set direction indicator
+            if(behavior == 0)
+            {
+                directionIndicator.setTarget(collision.gameObject.GetComponent<TileObject>().nextTile.transform.position - collision.gameObject.transform.position);
+                //Debug.Log(collision.gameObject.GetComponent<TileObject>().nextTile.transform.position - collision.gameObject.transform.position);
+            }
+
+
+            //other behavior
             if(checkpoint == null)
             {
                 checkpoint = collision.gameObject.transform;
