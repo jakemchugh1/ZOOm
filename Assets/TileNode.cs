@@ -11,7 +11,7 @@ public class TileNode : MonoBehaviour
         {
             Instantiate(FindObjectOfType<TrackSpawner>().milk, transform.position, FindObjectOfType<TrackSpawner>().milk.transform.rotation, transform);
         }   
-     if(Random.Range(0,9) == 1)
+     else if(Random.Range(0,9) == 2)
         {
             Instantiate(FindObjectOfType<TrackSpawner>().trashcan, transform.position, FindObjectOfType<TrackSpawner>().trashcan.transform.rotation, transform);
         }

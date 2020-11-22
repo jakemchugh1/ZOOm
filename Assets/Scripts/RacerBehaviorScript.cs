@@ -38,7 +38,7 @@ public class RacerBehaviorScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        cam = FindObjectOfType<Camera>();
+       // cam = FindObjectOfType<Camera>();
          GameObject car = transform.Find("Kart").gameObject;
         if (car){
              var carRenderer = car.GetComponent<Renderer>();
@@ -465,6 +465,7 @@ public class RacerBehaviorScript : MonoBehaviour
     {
         yield return new WaitForSeconds(4f);
         started = true;
+        cam.GetComponent<AudioSource>().Play();
     }
 
     void throwTrash()
@@ -473,9 +474,9 @@ public class RacerBehaviorScript : MonoBehaviour
         {
             if (trashcollect)
             {
-                trashbag = Instantiate(trashbag);
-                trashbag.transform.position = new Vector3(transform.position.x, 0.02f, transform.position.z);
-                trashbag.transform.forward = transform.forward* currentSpeed *Time.deltaTime;
+                GameObject temp = Instantiate(trashbag);
+                temp.transform.position = transform.position + (transform.forward);
+                temp.transform.rotation = transform.rotation;
                 trashcollect = false;
             }
         }

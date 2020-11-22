@@ -21,11 +21,10 @@ public class trashbagScript : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            //   Debug.Log("Hit");
-            //Do something
+            
             other.gameObject.GetComponent<RacerBehaviorScript>().gotHit = true;
             Destroy(gameObject);
         }
-        Destroy(gameObject);
+        
     }
 }
