@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class RacerBehaviorScript : MonoBehaviour
@@ -38,6 +39,8 @@ public class RacerBehaviorScript : MonoBehaviour
     public GameObject trashbag;
     public bool gotHit = false;
 
+    
+
     DirectionIndicator directionIndicator;
 
     AudioSource[] audio;
@@ -45,9 +48,13 @@ public class RacerBehaviorScript : MonoBehaviour
     public float startingPitch;
 
     int selectAnimal;
+
+    public RectTransform pauseMenu;
     // Start is called before the first frame update
     void Start()
     {
+        GlobalVariables.finished = false;
+        GlobalVariables.paused = false;
         place = 0;
         checkpoint = FindObjectOfType<TileObject>().transform;
         getNextTarget();
@@ -197,28 +204,58 @@ public class RacerBehaviorScript : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape) && behavior == 0 && started) pause();
+    }
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (behavior == 0)
+        
+        if (!GlobalVariables.paused)
         {
-            setCamera();
+            if (behavior == 0)
+            {
+                pauseMenu.gameObject.SetActive(false);
+                setCamera();
+            }
+            if (!started) return;
+            if (hovering) freeze();
+            else runBehavior();
+            returnToTrack();
+            if (gotHit)
+            {
+                transform.position = new Vector3(checkpoint.position.x, 1, checkpoint.position.z);
+                transform.LookAt(checkpoint.GetComponent<TileObject>().nextTile.transform.position);
+                currentSpeed = 0;
+                timer = 0;
+                hovering = true;
+                gotHit = false;
+            }
+            setAudioPitch();
+            if (behavior != 0) dynamicAI();
         }
-        if (!started) return;
-        if (hovering) freeze();
-        else runBehavior();
-        returnToTrack();
-        if (gotHit)
+        else if(behavior == 0)
         {
-            transform.position = new Vector3(checkpoint.position.x, 1, checkpoint.position.z);
-            transform.LookAt(checkpoint.GetComponent<TileObject>().nextTile.transform.position);
-            currentSpeed = 0;
-            timer = 0;
-            hovering = true;
-            gotHit = false;
+            pauseMenu.gameObject.SetActive(true);
         }
-        setAudioPitch();
-        if(behavior != 0)dynamicAI();
+        
+    }
+    public void quit()
+    {
+        Application.Quit();
+    }
+    public void pause()
+    {
+        GlobalVariables.paused = !GlobalVariables.paused;
+    }
+    public void returnToMain()
+    {
+        SceneManager.LoadScene(0);
+    }
+    public void resetRace()
+    {
+        SceneManager.LoadScene(2);
     }
 
     void dynamicAI()
@@ -537,9 +574,23 @@ public class RacerBehaviorScript : MonoBehaviour
             }
             else if (collision.gameObject.GetComponent<TileObject>() == getNextTile())
             {
-                checkpoint = collision.gameObject.transform;
-                getNextTarget();
-                if (collision.gameObject.GetComponent<TileObject>().tileIndex == 1) lap++;
+                if(behavior != 0)
+                {
+                    checkpoint = collision.gameObject.transform;
+                    getNextTarget();
+                    if (collision.gameObject.GetComponent<TileObject>().tileIndex == 1) lap++;
+                }
+                else
+                {
+                    checkpoint = collision.gameObject.transform;
+                    getNextTarget();
+                    if(lap == 3)
+                    {
+                        GlobalVariables.finished = true;
+                    }
+                    if (collision.gameObject.GetComponent<TileObject>().tileIndex == 1) lap++;
+                }
+                
             }
         }
     }

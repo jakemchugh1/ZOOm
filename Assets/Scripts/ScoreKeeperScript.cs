@@ -21,9 +21,12 @@ public class ScoreKeeperScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        lapText.text = ("Lap: "+drivers[0].lap);
+        if (!GlobalVariables.paused)
+        {
+            lapText.text = ("Lap: " + drivers[0].lap + "/3");
+            SortFirst();
+        }
         
-        SortFirst();
     }
 
     void SortFirst()

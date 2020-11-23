@@ -16,7 +16,11 @@ public class trashbagScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position += transform.forward * speed * Time.deltaTime;
+        if (!GlobalVariables.paused)
+        {
+            transform.position += transform.forward * speed * Time.deltaTime;
+        }
+        
     }
 
     private void OnTriggerEnter(Collider other)

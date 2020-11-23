@@ -8,6 +8,8 @@ public static class GlobalVariables
     public static Animal selectedAnimal = Animal.Bear;
     public static CarColor selectedCar = CarColor.Red;
     public static int aiDifficulty = 1;
+    public static bool finished = false;
+    public static bool paused;
 
     public static string trackLink = "https://jakemchugh1.github.io/ZOOm-firstDemo/Track";
     public static string track1Link = "https://jakemchugh1.github.io/ZOOm-firstDemo/Track1";

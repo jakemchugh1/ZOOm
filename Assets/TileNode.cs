@@ -6,6 +6,7 @@ public class TileNode : MonoBehaviour
 {
     float timer;
     float limit;
+    GameObject power;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,24 +17,32 @@ public class TileNode : MonoBehaviour
 
     void Update()
     {
-        timer += Time.deltaTime;
-        if(timer >= limit)
+        if (!GlobalVariables.paused)
         {
-            timer = 0;
-            spawnPower();
+            timer += Time.deltaTime;
+            if (timer >= limit)
+            {
+                timer = 0;
+                spawnPower();
+            }
         }
+        
     }
 
     void spawnPower()
     {
-        if (Random.Range(0, 9) == 1)
+        if (!power)
         {
-            Instantiate(FindObjectOfType<TrackSpawner>().milk, transform.position, FindObjectOfType<TrackSpawner>().milk.transform.rotation, transform);
+            if (Random.Range(0, 9) == 1)
+            {
+                power = Instantiate(FindObjectOfType<TrackSpawner>().milk, transform.position, FindObjectOfType<TrackSpawner>().milk.transform.rotation, transform);
+            }
+            else if (Random.Range(0, 9) == 2)
+            {
+                power = Instantiate(FindObjectOfType<TrackSpawner>().trashcan, transform.position, FindObjectOfType<TrackSpawner>().trashcan.transform.rotation, transform);
+            }
         }
-        else if (Random.Range(0, 9) == 2)
-        {
-            Instantiate(FindObjectOfType<TrackSpawner>().trashcan, transform.position, FindObjectOfType<TrackSpawner>().trashcan.transform.rotation, transform);
-        }
+        
     }
 
 
