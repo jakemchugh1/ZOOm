@@ -37,9 +37,14 @@ public class RacerBehaviorScript : MonoBehaviour
     public bool gotHit = false;
 
     DirectionIndicator directionIndicator;
+
+    AudioSource[] audio;
+
+    public float startingPitch;
     // Start is called before the first frame update
     void Start()
     {
+        audio = GetComponents<AudioSource>();
         directionIndicator = FindObjectOfType<DirectionIndicator>();
        // cam = FindObjectOfType<Camera>();
          GameObject car = transform.Find("Kart").gameObject;
@@ -127,6 +132,7 @@ public class RacerBehaviorScript : MonoBehaviour
                 transform.rotation = Quaternion.Euler(0, 180, 0);
                 break;
         }
+        setAudioPitch();
     }
 
     void setStats(Animal animal)
@@ -178,7 +184,16 @@ public class RacerBehaviorScript : MonoBehaviour
             hovering = true;
             gotHit = false;
         }
+        setAudioPitch();
+    }
 
+    void setAudioPitch()
+    {
+        for(int i = 0; i < audio.Length; i++)
+        {
+            audio[i].pitch = startingPitch + Mathf.Abs(currentSpeed / maxSpeed);
+        }
+        
     }
 
     void runBehavior()
