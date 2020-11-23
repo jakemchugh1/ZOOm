@@ -18,7 +18,7 @@ public class RacerPlotter : MonoBehaviour
         for(int i = 0; i < racers.Length; i++)
         {
             plots[i] = Instantiate<GameObject>(plot, FindObjectOfType<Canvas>().transform).GetComponent<RectTransform>();
-            plots[i].gameObject.GetComponentInChildren<Text>().text = "P" + (i + 1);
+            plots[i].gameObject.GetComponentInChildren<Text>().text = "P" + (racers[i].playerNumber);
         }
     }
 

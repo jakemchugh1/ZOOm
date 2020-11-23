@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class RacerBehaviorScript : MonoBehaviour
 {
-    [SerializeField]private Transform checkpoint;
+    public int playerNumber;
+    public Transform checkpoint;
     public float delay;
     public float timer;
     bool hovering;

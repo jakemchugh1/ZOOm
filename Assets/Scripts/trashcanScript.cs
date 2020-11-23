@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class trashcanScript : MonoBehaviour
 {
+    public GameObject sound;
     // Start is called before the first frame update
     private void OnTriggerEnter(Collider other)
     {
@@ -11,6 +12,7 @@ public class trashcanScript : MonoBehaviour
         {
             //   Debug.Log("Hit");
             other.gameObject.GetComponent<RacerBehaviorScript>().trashcollect = true;
+            Instantiate<GameObject>(sound).transform.position = transform.position;
             Destroy(gameObject);
         }
     }

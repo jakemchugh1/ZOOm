@@ -107,4 +107,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a10adbdeec3fa7438118943af84b1be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trashbag: {fileID: 0}
+  sound: {fileID: 7317227618267248508, guid: 4f815002a8eb15a498dd0018c24d402c, type: 3}
