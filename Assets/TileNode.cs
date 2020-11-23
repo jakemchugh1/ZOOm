@@ -17,7 +17,7 @@ public class TileNode : MonoBehaviour
 
     void Update()
     {
-        if (!GlobalVariables.paused)
+        if (!GlobalVariables.paused && !GlobalVariables.finished)
         {
             timer += Time.deltaTime;
             if (timer >= limit)

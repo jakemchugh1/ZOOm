@@ -50,11 +50,16 @@ public class RacerBehaviorScript : MonoBehaviour
     int selectAnimal;
 
     public RectTransform pauseMenu;
+
+    public RectTransform finishMenu;
+
+    public RectTransform trashSprite;
     // Start is called before the first frame update
     void Start()
     {
         GlobalVariables.finished = false;
         GlobalVariables.paused = false;
+        
         place = 0;
         checkpoint = FindObjectOfType<TileObject>().transform;
         getNextTarget();
@@ -100,6 +105,7 @@ public class RacerBehaviorScript : MonoBehaviour
         
         if(behavior == 0)
         {
+            
             selectAnimal = (int)GlobalVariables.selectedAnimal;
             setStats(GlobalVariables.selectedAnimal);
         }
@@ -206,13 +212,22 @@ public class RacerBehaviorScript : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && behavior == 0 && started) pause();
+        
+        //if (Input.GetKeyDown(KeyCode.F) && behavior == 0  && !GlobalVariables.finished) finish();
+        if(behavior == 0)
+        {
+            if (Input.GetKeyDown(KeyCode.Escape) && started && !GlobalVariables.finished) pause();
+
+
+            if (trashcollect) trashSprite.gameObject.SetActive(true);
+            else trashSprite.gameObject.SetActive(false);
+        }
     }
     // Update is called once per frame
     void FixedUpdate()
     {
         
-        if (!GlobalVariables.paused)
+        if (!GlobalVariables.paused && !GlobalVariables.finished)
         {
             if (behavior == 0)
             {
@@ -237,9 +252,16 @@ public class RacerBehaviorScript : MonoBehaviour
         }
         else if(behavior == 0)
         {
-            pauseMenu.gameObject.SetActive(true);
+            
+
+            if (!GlobalVariables.finished) pauseMenu.gameObject.SetActive(true);
+            else finishMenu.gameObject.SetActive(true);
         }
         
+    }
+    void finish()
+    {
+        GlobalVariables.finished = true;
     }
     public void quit()
     {
@@ -586,9 +608,13 @@ public class RacerBehaviorScript : MonoBehaviour
                     getNextTarget();
                     if(lap == 3)
                     {
-                        GlobalVariables.finished = true;
+                        finish();
                     }
-                    if (collision.gameObject.GetComponent<TileObject>().tileIndex == 1) lap++;
+                    else
+                    {
+                        if (collision.gameObject.GetComponent<TileObject>().tileIndex == 1) lap++;
+                    }
+                    
                 }
                 
             }

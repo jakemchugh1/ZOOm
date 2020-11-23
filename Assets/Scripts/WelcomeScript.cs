@@ -32,11 +32,7 @@ public class WelcomeScript : MonoBehaviour
         Button btn = startBtn.GetComponent<Button>();
 		btn.onClick.AddListener(startedClick);   
 
-        Toggle m_Toggle = toggleTrackCustom.GetComponent<Toggle>();
-        //Add listener for when the state of the Toggle changes, to take action
-        m_Toggle.onValueChanged.AddListener(delegate {
-            ToggleValueChanged(m_Toggle);
-        });
+        
         
     }
 
@@ -111,13 +107,8 @@ public class WelcomeScript : MonoBehaviour
        Toggle t1 = toggleTrack1.GetComponent<Toggle>();
        Toggle t2 = toggleTrack2.GetComponent<Toggle>();
        Toggle t3 = toggleTrack3.GetComponent<Toggle>();
-       Toggle tc = toggleTrackCustom.GetComponent<Toggle>();
 
-       if(tc.isOn){
-       GlobalVariables.selectedFile = "Track";
        
-       SceneManager.LoadScene(1);
-       }else{
        if(t1.isOn)
        GlobalVariables.selectedFile = "Track1";
        else if(t2.isOn)
@@ -126,10 +117,15 @@ public class WelcomeScript : MonoBehaviour
        GlobalVariables.selectedFile = "Track3";
 
        SceneManager.LoadScene(3);
-       }
+       
 
 
 
+    }
+
+    public void quit()
+    {
+        Application.Quit();
     }
 
     void ToggleValueChanged(Toggle t){

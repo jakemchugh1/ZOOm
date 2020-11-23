@@ -16,7 +16,7 @@ public class trashbagScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!GlobalVariables.paused)
+        if (!GlobalVariables.paused && !GlobalVariables.finished)
         {
             transform.position += transform.forward * speed * Time.deltaTime;
         }
