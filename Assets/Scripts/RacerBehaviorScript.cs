@@ -203,7 +203,6 @@ public class RacerBehaviorScript : MonoBehaviour
         if (behavior == 0)
         {
             setCamera();
-            throwTrash();
         }
         if (!started) return;
         if (hovering) freeze();
@@ -226,7 +225,7 @@ public class RacerBehaviorScript : MonoBehaviour
     {
         if (place == 1)
         {
-            behavior = 2;
+            behavior = 1;
         }
         else if (place == 2)
         {
@@ -294,8 +293,11 @@ public class RacerBehaviorScript : MonoBehaviour
             turnRight();
         }
         moveForward();
-        
-        
+        if (Input.GetKey(KeyCode.Space))
+        {
+            throwTrash();
+        }
+
 
     }
 
@@ -307,6 +309,7 @@ public class RacerBehaviorScript : MonoBehaviour
 
     void easyAI()
     {
+        setStats(selectAnimal);
         if (getNextTile())
         {
 
@@ -501,7 +504,7 @@ public class RacerBehaviorScript : MonoBehaviour
                 driveTarget = getNextTile().getRandomTileNode();
                 break;
             case (1):
-                driveTarget = getNextTile().getRandomTileNode();
+                driveTarget = getNextTile().getNearestMilk(transform.position);
                 break;
             case (2):
                 if (!trashcollect) driveTarget = getNextTile().getNearestTrashCan(transform.position);
@@ -548,17 +551,15 @@ public class RacerBehaviorScript : MonoBehaviour
         cam.GetComponent<AudioSource>().Play();
     }
 
-    void throwTrash()
+    public void throwTrash()
     {
-        if (Input.GetKey(KeyCode.Space))
+        if (trashcollect)
         {
-            if (trashcollect)
-            {
-                GameObject temp = Instantiate(trashbag);
-                temp.transform.position = transform.position + (transform.forward);
-                temp.transform.rotation = transform.rotation;
-                trashcollect = false;
-            }
+            GameObject temp = Instantiate(trashbag);
+            temp.transform.position = transform.position + (transform.forward * 0.5f);
+            temp.transform.rotation = transform.rotation;
+            trashcollect = false;
         }
+        
     }
 }

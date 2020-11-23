@@ -23,7 +23,6 @@ public class WelcomeScript : MonoBehaviour
 
     public Toggle toggleBear, toggleMonkey, togglePenguin, toggleRabbit;
     public Toggle toggleTrack1, toggleTrack2 , toggleTrack3, toggleTrackCustom;
-    public Dropdown difficulty;
 
     
 
@@ -38,7 +37,7 @@ public class WelcomeScript : MonoBehaviour
         m_Toggle.onValueChanged.AddListener(delegate {
             ToggleValueChanged(m_Toggle);
         });
-        difficulty = FindObjectOfType<Dropdown>();
+        
     }
 
     // Update is called once per frame
@@ -94,7 +93,6 @@ public class WelcomeScript : MonoBehaviour
 
     void startedClick()
     {
-       GlobalVariables.aiDifficulty = difficulty.value + 1;
        // Select Animal
        Toggle a1 = toggleBear.GetComponent<Toggle>();
        Toggle a2 = toggleMonkey.GetComponent<Toggle>();
