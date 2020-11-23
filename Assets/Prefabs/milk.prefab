@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 1730267902581030489}
   - component: {fileID: 212376396904850967}
   - component: {fileID: 1144817913699144617}
-  - component: {fileID: 5996348186748665621}
   - component: {fileID: 5996348186748665618}
+  - component: {fileID: 4610387921893231940}
   m_Layer: 0
   m_Name: milk
   m_TagString: Untagged
@@ -81,20 +81,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &5996348186748665621
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5996348186748665620}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -5495902117074765545, guid: b02357c52dd77fe4e88acc1ca502a79a, type: 3}
 --- !u!114 &5996348186748665618
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -108,3 +94,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sound: {fileID: 8216325946954612825, guid: f64d7f480728cb74d88b12867e7c48ae, type: 3}
+--- !u!135 &4610387921893231940
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5996348186748665620}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.03
+  m_Center: {x: -4.6566145e-10, y: -0.0000000018626454, z: 0.014732254}

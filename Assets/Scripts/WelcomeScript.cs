@@ -125,7 +125,7 @@ public class WelcomeScript : MonoBehaviour
        else if(t3.isOn)
        GlobalVariables.selectedFile = "Track3";
 
-       SceneManager.LoadScene(2);
+       SceneManager.LoadScene(3);
        }
 
 

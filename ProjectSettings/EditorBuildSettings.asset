@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Jacob's Scene.unity
     guid: 965c89414ee689740998ed6ed6984480
+  - enabled: 1
+    path: Assets/Scenes/howToScene.unity
+    guid: b5f36f07d37b5bb44a87e9ac6af8a0a7
   m_configObjects: {}
