@@ -9,7 +9,7 @@ public class ShootScript : MonoBehaviour
     void Start()
     {
         racer = transform.parent.gameObject.GetComponent<RacerBehaviorScript>();
-        Debug.Log(transform.parent.name);
+        //Debug.Log(transform.parent.name);
     }
 
     private void OnTriggerEnter(Collider other)

@@ -5,10 +5,12 @@ using UnityEngine;
 public class trashbagScript : MonoBehaviour
 {
     public float speed = 10f;
+    public GameObject throwSound;
+    public GameObject hitSound;
     // Start is called before the first frame update
     void Start()
     {
-        
+        Instantiate<GameObject>(throwSound).transform.position = transform.position;
     }
 
     // Update is called once per frame
@@ -23,6 +25,7 @@ public class trashbagScript : MonoBehaviour
         {
             
             other.gameObject.GetComponent<RacerBehaviorScript>().gotHit = true;
+            Instantiate<GameObject>(hitSound).transform.position = transform.position;
             Destroy(gameObject);
         }
         
