@@ -30,9 +30,13 @@ public class ScoreKeeperScript : MonoBehaviour
     {
         System.Array.Sort(drivers, new driverCompare());
         first.text = "1st: Player "+drivers[0].playerNumber;
+        drivers[0].place = 1;
         second.text = "2nd: Player " + drivers[1].playerNumber;
+        drivers[1].place = 2;
         third.text = "3rd: Player " + drivers[2].playerNumber;
+        drivers[2].place = 3;
         fourth.text = "4th: Player " + drivers[3].playerNumber;
+        drivers[3].place = 4;
     }
     class driverCompare : IComparer<RacerBehaviorScript>
     {

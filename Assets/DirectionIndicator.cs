@@ -17,7 +17,7 @@ public class DirectionIndicator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = new Vector3(racer.position.x, 0.5f, racer.position.z);
+        transform.position = new Vector3(racer.position.x, 0.5f, racer.position.z); //Vector3.Lerp(transform.position,new Vector3(racer.position.x, 0.5f, racer.position.z), 10*Time.deltaTime);
         if (target != null)
         {
             transform.rotation = Quaternion.RotateTowards(transform.rotation, target, Time.deltaTime*maxDegreesRotation);

@@ -31,7 +31,7 @@ public class TileObject : MonoBehaviour
         if (nodes.Length <= 0) return gameObject;
         GameObject nearest = nodes[0].gameObject;
         float distance = Vector3.Distance(position, nearest.transform.position);
-        for(int i = 0; i < nodes.Length; i++)
+        for(int i = 1; i < nodes.Length; i++)
         {
             
             if(Vector3.Distance(position, nodes[i].transform.position) < distance)
@@ -42,6 +42,44 @@ public class TileObject : MonoBehaviour
         }
 
         return nearest;
+    }
+
+    public GameObject getNearestTrashCan(Vector3 position)
+    {
+        trashcanScript[] cans = GetComponentsInChildren<trashcanScript>();
+        if (cans.Length <= 0) return getNearestMilk(position);
+        GameObject nearest = cans[0].gameObject;
+        float distance = Vector3.Distance(position, nearest.transform.position);
+        for (int i = 1; i < cans.Length; i++)
+        {
+
+            if (Vector3.Distance(position, cans[i].transform.position) < distance)
+            {
+                distance = Vector3.Distance(position, cans[i].transform.position);
+                nearest = cans[i].gameObject;
+            }
+        }
+
+        return nearest.transform.parent.gameObject;
+    }
+
+    public GameObject getNearestMilk(Vector3 position)
+    {
+        milkScript[] cans = GetComponentsInChildren<milkScript>();
+        if (cans.Length <= 0) return getNearestTileNode(position);
+        GameObject nearest = cans[0].gameObject;
+        float distance = Vector3.Distance(position, nearest.transform.position);
+        for (int i = 0; i < cans.Length; i++)
+        {
+
+            if (Vector3.Distance(position, cans[i].transform.position) < distance)
+            {
+                distance = Vector3.Distance(position, cans[i].transform.position);
+                nearest = cans[i].gameObject;
+            }
+        }
+
+        return nearest.transform.parent.gameObject;
     }
 
 }

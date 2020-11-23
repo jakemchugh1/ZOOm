@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class RacerBehaviorScript : MonoBehaviour
 {
+    public int place;
     public int playerNumber;
     public Transform checkpoint;
     public float delay;
@@ -42,9 +43,14 @@ public class RacerBehaviorScript : MonoBehaviour
     AudioSource[] audio;
 
     public float startingPitch;
+
+    int selectAnimal;
     // Start is called before the first frame update
     void Start()
     {
+        place = 0;
+        checkpoint = FindObjectOfType<TileObject>().transform;
+        getNextTarget();
         audio = GetComponents<AudioSource>();
         directionIndicator = FindObjectOfType<DirectionIndicator>();
        // cam = FindObjectOfType<Camera>();
@@ -84,7 +90,7 @@ public class RacerBehaviorScript : MonoBehaviour
         }
         StartCoroutine(Countdown());
         //maxSpeed = 2;
-        int selectAnimal;
+        
         if(behavior == 0)
         {
             selectAnimal = (int)GlobalVariables.selectedAnimal;
@@ -163,6 +169,33 @@ public class RacerBehaviorScript : MonoBehaviour
                 break;
         }
     }
+    void setStats(int i)
+    {
+
+        switch (i)
+        {
+            case (0):
+                maxSpeed = 2.5f;
+                acceleration = 0.5f;
+                turn = 0.2f;
+                break;
+            case (1):
+                maxSpeed = 2f;
+                acceleration = 0.5f;
+                turn = 0.25f;
+                break;
+            case (2):
+                maxSpeed = 2f;
+                acceleration = 1f;
+                turn = 0.2f;
+                break;
+            case (3):
+                maxSpeed = 3f;
+                acceleration = 0.75f;
+                turn = 0.18f;
+                break;
+        }
+    }
 
     // Update is called once per frame
     void FixedUpdate()
@@ -186,6 +219,27 @@ public class RacerBehaviorScript : MonoBehaviour
             gotHit = false;
         }
         setAudioPitch();
+        if(behavior != 0)dynamicAI();
+    }
+
+    void dynamicAI()
+    {
+        if (place == 1)
+        {
+            behavior = 2;
+        }
+        else if (place == 2)
+        {
+            behavior = 2;
+        }
+        else if (place == 3)
+        {
+            behavior = 3;
+        }
+        else if (place == 4)
+        {
+            behavior = 3;
+        }
     }
 
     void setAudioPitch()
@@ -265,9 +319,11 @@ public class RacerBehaviorScript : MonoBehaviour
 
     void mediumAI()
     {
+        setStats(selectAnimal);
+        maxSpeed *= 1.1f;
         if (getNextTile())
         {
-
+            
             steer(mediumSteerTolerance);
             accelerate();
             moveForward();
@@ -277,9 +333,11 @@ public class RacerBehaviorScript : MonoBehaviour
 
     void hardAI()
     {
+        setStats(selectAnimal);
+        maxSpeed *= 1.3f;
         if (getNextTile())
         {
-
+            
             steer(hardSteerTolerance);
             accelerate();
             moveForward();
@@ -446,16 +504,14 @@ public class RacerBehaviorScript : MonoBehaviour
                 driveTarget = getNextTile().getRandomTileNode();
                 break;
             case (2):
-                driveTarget = getNextTile().getNearestTileNode(transform.position);
+                if (!trashcollect) driveTarget = getNextTile().getNearestTrashCan(transform.position);
+                else driveTarget = getNextTile().getNearestTileNode(transform.position);
                 break;
             case (3):
-                driveTarget = getNextTile().getRandomTileNode();
+                if(!trashcollect) driveTarget = getNextTile().getNearestTrashCan(transform.position);
+                else driveTarget = getNextTile().getNearestMilk(transform.position);
                 break;
         }
-    }
-    void wrongWay()
-    {
-        //Debug.Log("Wrong Way!");
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -482,10 +538,6 @@ public class RacerBehaviorScript : MonoBehaviour
                 getNextTarget();
                 if (collision.gameObject.GetComponent<TileObject>().tileIndex == 1) lap++;
             }
-            else
-            {
-                wrongWay();
-            }
         }
     }
 
@@ -498,7 +550,7 @@ public class RacerBehaviorScript : MonoBehaviour
 
     void throwTrash()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space))
         {
             if (trashcollect)
             {
