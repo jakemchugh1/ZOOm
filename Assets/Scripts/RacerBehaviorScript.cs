@@ -40,7 +40,8 @@ public class RacerBehaviorScript : MonoBehaviour
     public GameObject trashbag;
     public bool gotHit = false;
 
-    
+    public Slider  volumSlider;
+    private float maxEngineVolume = 0.25f;
 
     DirectionIndicator directionIndicator;
 
@@ -69,6 +70,7 @@ public class RacerBehaviorScript : MonoBehaviour
         checkpoint = FindObjectOfType<TileObject>().transform;
         getNextTarget();
         audio = GetComponents<AudioSource>();
+        maxEngineVolume = audio[0].volume;
         directionIndicator = FindObjectOfType<DirectionIndicator>();
        // cam = FindObjectOfType<Camera>();
          GameObject car = transform.Find("Kart").gameObject;
@@ -273,12 +275,30 @@ public class RacerBehaviorScript : MonoBehaviour
         else if(behavior == 0)
         {
             
+            if (!GlobalVariables.finished) 
+            {
+                pauseMenu.gameObject.SetActive(true);
+                volumSlider.value = cam.GetComponent<AudioSource>().volume;
+                volumSlider.onValueChanged.AddListener (delegate {onChangeValue();});
 
-            if (!GlobalVariables.finished) pauseMenu.gameObject.SetActive(true);
+            }
             else finishMenu.gameObject.SetActive(true);
         }
         
     }
+
+    void onChangeValue()
+    {
+         cam.GetComponent<AudioSource>().volume = volumSlider.value;
+         GameObject[] riders = GameObject.FindGameObjectsWithTag("Player");
+        foreach (GameObject rider in riders)
+        {
+            RacerBehaviorScript rs = rider.GetComponent<RacerBehaviorScript>();
+            rs.setEngineVolume(volumSlider.value);
+        }
+
+    }
+
     void finish()
     {
         GlobalVariables.finished = true;
@@ -327,6 +347,15 @@ public class RacerBehaviorScript : MonoBehaviour
             audio[i].pitch = startingPitch + Mathf.Abs(currentSpeed / maxSpeed);
         }
         
+    }
+
+    public void setEngineVolume(float value)
+    {
+
+        for(int i = 0; i < audio.Length; i++)
+        {
+            audio[i].volume = value*maxEngineVolume;
+        }
     }
 
     void runBehavior()
