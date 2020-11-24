@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.Rendering;
 
 public class RacerBehaviorScript : MonoBehaviour
 {
@@ -54,6 +55,10 @@ public class RacerBehaviorScript : MonoBehaviour
     public RectTransform finishMenu;
 
     public RectTransform trashSprite;
+
+    public bool isSpeedup;
+    public float startSpeedup = 0;
+    public float maxSpeedup = 90;
     // Start is called before the first frame update
     void Start()
     {
@@ -221,6 +226,21 @@ public class RacerBehaviorScript : MonoBehaviour
 
             if (trashcollect) trashSprite.gameObject.SetActive(true);
             else trashSprite.gameObject.SetActive(false);
+        }
+        if(this.isSpeedup)
+        {
+            if(this.startSpeedup <= this.maxSpeedup)
+            {
+                this.startSpeedup++;
+            }
+            else
+            {
+                this.startSpeedup = 0;
+                this.isSpeedup = false;
+                 var volume = gameObject.GetComponent<Volume>();
+                if(volume)
+                volume.enabled = false;
+            }
         }
     }
     // Update is called once per frame
@@ -638,5 +658,11 @@ public class RacerBehaviorScript : MonoBehaviour
             trashcollect = false;
         }
         
+    }
+
+    public void setSpeedup()
+    {
+        this.isSpeedup =true;
+        this.startSpeedup = 0;
     }
 }
