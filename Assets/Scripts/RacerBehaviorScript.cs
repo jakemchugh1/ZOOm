@@ -169,23 +169,23 @@ public class RacerBehaviorScript : MonoBehaviour
         {
             case (Animal.Bear):
                 maxSpeed = 2.5f;
-                acceleration = 0.5f;
-                turn = 0.2f;
+                acceleration = 1f;
+                turn = 0.1f;
                 break;
             case (Animal.Monkey):
-                maxSpeed = 2f;
-                acceleration = 0.5f;
-                turn = 0.25f;
+                maxSpeed = 2.5f;
+                acceleration = .8f;
+                turn = 0.19f;
                 break;
             case (Animal.Penguin):
-                maxSpeed = 2f;
-                acceleration = 1f;
-                turn = 0.2f;
+                maxSpeed = 2.5f;
+                acceleration = .7f;
+                turn = 0.21f;
                 break;
             case (Animal.Rabbit):
-                maxSpeed = 3f;
-                acceleration = 0.75f;
-                turn = 0.18f;
+                maxSpeed = 2.5f;
+                acceleration = 0.5f;
+                turn = 0.25f;
                 break;
         }
     }
@@ -683,6 +683,7 @@ public class RacerBehaviorScript : MonoBehaviour
         {
             GameObject temp = Instantiate(trashbag);
             temp.transform.position = transform.position + (transform.forward * 0.5f);
+            temp.transform.position += new Vector3(0, 0.05f, 0);
             temp.transform.rotation = transform.rotation;
             trashcollect = false;
         }
