@@ -34,23 +34,7 @@ public class trashbagScript : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == "Player")
-        {
-
-            other.gameObject.GetComponent<RacerBehaviorScript>().gotHit = true;
-            Instantiate<GameObject>(hitSound).transform.position = transform.position;
-            Destroy(gameObject);
-        }
-        else
-        {
-            Instantiate<GameObject>(hitSound).transform.position = transform.position;
-            Destroy(gameObject);
-        }
-
-
-    }
+   
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Player")
