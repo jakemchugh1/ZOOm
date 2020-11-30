@@ -4,28 +4,39 @@ using UnityEngine;
 
 public class BusScript : MonoBehaviour
 {
-    RacerBehaviorScript racer;
+    
+    Transform racer;
     Quaternion target;
     float maxDegreesRotation;
+    [SerializeField] float busSpeed;
     // Start is called before the first frame update
     void Start()
     {
-        racer = transform.parent.GetComponent<RacerBehaviorScript>();
-        maxDegreesRotation = 360;
-        setTarget(racer.checkpoint.GetComponent<TileObject>().nextTile.transform.position - racer.checkpoint.position);
+        racer = transform.parent;
+        maxDegreesRotation = 180;
+        Physics.IgnoreCollision(racer.gameObject.GetComponent<BoxCollider>(), GetComponentInChildren<BoxCollider>(), true);
+        transform.position = new Vector3(racer.position.x, 0, racer.position.z);
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        
-        //transform.position = new Vector3(racer.position.x, 0.5f, racer.position.z); //Vector3.Lerp(transform.position,new Vector3(racer.position.x, 0.5f, racer.position.z), 10*Time.deltaTime);
-        if (target != null)
+        if(FindObjectOfType<ScoreKeeperScript>().drivers[0] != racer.GetComponent<RacerBehaviorScript>())
         {
-            racer.transform.rotation = Quaternion.RotateTowards(racer.transform.rotation, target, Time.deltaTime * maxDegreesRotation);
-            
+            transform.position = new Vector3(racer.position.x, 0, racer.position.z); //Vector3.Lerp(transform.position,new Vector3(racer.position.x, 0.5f, racer.position.z), 10*Time.deltaTime);
+            if (target != null)
+            {
+                racer.rotation = Quaternion.RotateTowards(racer.rotation, target, Time.deltaTime * maxDegreesRotation);
+                Vector3 temp = racer.position;
+                racer.position += racer.forward * Time.deltaTime * busSpeed;
+                racer.position = new Vector3(racer.position.x, temp.y, racer.position.z);
+            }
         }
-        setTarget(racer.checkpoint.GetComponent<TileObject>().nextTile.transform.position - racer.checkpoint.position);
+        else
+        {
+            Destroy(gameObject);
+        }
+        
     }
 
     public void setTarget(Vector3 dir)

@@ -19,7 +19,17 @@ public class trashcanScript : MonoBehaviour
         
         if (other.gameObject.tag == "Player")
         {
-            //   Debug.Log("Hit");
+            //   check to see if in  last place
+            if(other.gameObject.GetComponent<RacerBehaviorScript>() == FindObjectOfType<ScoreKeeperScript>().drivers[3])
+            {
+                other.gameObject.GetComponent<RacerBehaviorScript>().itemHeld = "bus";
+            }
+            else
+            {
+                other.gameObject.GetComponent<RacerBehaviorScript>().itemHeld = "trash";
+
+
+            }
             other.gameObject.GetComponent<RacerBehaviorScript>().trashcollect = true;
             Instantiate<GameObject>(sound).transform.position = transform.position;
             Destroy(gameObject);

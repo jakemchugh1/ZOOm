@@ -73,10 +73,16 @@ public class RacerBehaviorScript : MonoBehaviour
 
     public float generalTimer;
 
+    public Vector3 nextTileDir;
 
+    public GameObject bus;
+    public GameObject busPrefab;
+
+    public string itemHeld;
     // Start is called before the first frame update
     void Start()
     {
+        itemHeld = "";
         generalTimer = 0;
         GlobalVariables.finished = false;
         GlobalVariables.paused = false;
@@ -411,22 +417,27 @@ public class RacerBehaviorScript : MonoBehaviour
 
     void runBehavior()
     {
-        switch (behavior)
+        
+        if (!bus)
         {
-            case (0):
-                player();
-                break;
-            case (1):
-                easyAI();
-                break;
-            case (2):
-                mediumAI();
-                break;
-            case (3):
-                hardAI();
-                break;
+            switch (behavior)
+            {
+                case (0):
+                    player();
+                    break;
+                case (1):
+                    easyAI();
+                    break;
+                case (2):
+                    mediumAI();
+                    break;
+                case (3):
+                    hardAI();
+                    break;
 
+            }
         }
+        
     }
 
     void player()
@@ -571,6 +582,7 @@ public class RacerBehaviorScript : MonoBehaviour
             moveForward();
             //turnTowards(driveTarget);
         }
+        if (trashcollect && itemHeld == "bus") throwTrash();
     }
 
     void accelerate()
@@ -740,6 +752,7 @@ public class RacerBehaviorScript : MonoBehaviour
                 break;
             case (3):
                 if(!trashcollect) driveTarget = getNextTile().getNearestTrashCan(transform.position);
+                
                 else driveTarget = getNextTile().getNearestMilk(transform.position);
                 break;
         }
@@ -749,11 +762,18 @@ public class RacerBehaviorScript : MonoBehaviour
     {
         if(collision.gameObject.tag == "Tile")
         {
-                
+
             ///set direction indicator
-            if(behavior == 0)
+            ///
+            nextTileDir = (collision.gameObject.GetComponent<TileObject>().nextTile.transform.position - collision.gameObject.transform.position);
+
+            if (bus)
             {
-                directionIndicator.setTarget(collision.gameObject.GetComponent<TileObject>().nextTile.transform.position - collision.gameObject.transform.position);
+                bus.GetComponent<BusScript>().setTarget(nextTileDir);
+            }
+            if (behavior == 0)
+            {
+                directionIndicator.setTarget(nextTileDir);
                 //Debug.Log(collision.gameObject.GetComponent<TileObject>().nextTile.transform.position - collision.gameObject.transform.position);
             }
 
@@ -817,10 +837,17 @@ public class RacerBehaviorScript : MonoBehaviour
     {
         if (trashcollect)
         {
-            GameObject temp = Instantiate(trashbag);
-            temp.transform.position = transform.position + (transform.forward * 0.5f);
-            temp.transform.position += new Vector3(0, 0.05f, 0);
-            temp.transform.rotation = transform.rotation;
+            if(itemHeld == "trash")
+            {
+                GameObject temp = Instantiate(trashbag);
+                temp.transform.position = transform.position + (transform.forward * 0.5f);
+                temp.transform.position += new Vector3(0, 0.05f, 0);
+                temp.transform.rotation = transform.rotation;
+                
+            }else if(itemHeld == "bus" && !bus)
+            {
+                bus = Instantiate<GameObject>(busPrefab, transform);
+            }
             trashcollect = false;
         }
         
