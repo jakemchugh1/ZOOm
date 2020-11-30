@@ -9,6 +9,7 @@ public class SoundInstance : MonoBehaviour
     void Start()
     {
         audio = GetComponent<AudioSource>();
+        audio.volume = audio.volume * GlobalVariables.volume;
         audio.Play();
     }
 

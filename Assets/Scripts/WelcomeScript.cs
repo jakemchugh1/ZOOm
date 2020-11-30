@@ -20,6 +20,7 @@ public class WelcomeScript : MonoBehaviour
     public ScrollSnap carhss;
     public Text animalLbl;
     public Text carLbl;
+    public Slider volumeSlider;
 
     public Toggle toggleBear, toggleMonkey, togglePenguin, toggleRabbit;
     public Toggle toggleTrack1, toggleTrack2 , toggleTrack3, toggleTrackCustom;
@@ -31,13 +32,21 @@ public class WelcomeScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        volumeSlider = FindObjectOfType<Slider>();
         Button btn = startBtn.GetComponent<Button>();
-		btn.onClick.AddListener(startedClick);   
-
-        Toggle t = volumToggle.GetComponent<Toggle>();
+		btn.onClick.AddListener(startedClick);
+        Toggle t = volumToggle;
         t.onValueChanged.AddListener(delegate {
             ToggleVolume(t);
         });
+        volumeSlider.value = GlobalVariables.volume;
+        volumeSlider.onValueChanged.AddListener(delegate { onValueChanged(); });
+    }
+
+    void onValueChanged()
+    {
+        mainCam.GetComponent<AudioSource>().volume = volumeSlider.value;
+        GlobalVariables.volume = volumeSlider.value;
     }
 
     // Update is called once per frame

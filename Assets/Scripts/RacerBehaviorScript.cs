@@ -281,7 +281,7 @@ public class RacerBehaviorScript : MonoBehaviour
             if (!GlobalVariables.finished) 
             {
                 pauseMenu.gameObject.SetActive(true);
-                volumSlider.value = cam.GetComponent<AudioSource>().volume;
+                volumSlider.value = GlobalVariables.volume;
                 volumSlider.onValueChanged.AddListener (delegate {onChangeValue();});
 
             }
@@ -299,7 +299,7 @@ public class RacerBehaviorScript : MonoBehaviour
             RacerBehaviorScript rs = rider.GetComponent<RacerBehaviorScript>();
             rs.setEngineVolume(volumSlider.value);
         }
-
+        GlobalVariables.volume = volumSlider.value;
     }
 
     void finish()

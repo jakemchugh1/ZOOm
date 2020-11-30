@@ -10,6 +10,7 @@ public static class GlobalVariables
     public static int aiDifficulty = 1;
     public static bool finished = false;
     public static bool paused;
+    public static float volume = 0.5f;
 
     public static string trackLink = "https://jakemchugh1.github.io/ZOOm-firstDemo/Track";
     public static string track1Link = "https://jakemchugh1.github.io/ZOOm-firstDemo/Track1";

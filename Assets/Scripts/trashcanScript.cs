@@ -5,9 +5,18 @@ using UnityEngine;
 public class trashcanScript : MonoBehaviour
 {
     public GameObject sound;
+
+    private void Start()
+    {
+        foreach (AudioSource a in GetComponents<AudioSource>())
+        {
+            a.volume = GlobalVariables.volume;
+        }
+    }
     // Start is called before the first frame update
     private void OnTriggerEnter(Collider other)
     {
+        
         if (other.gameObject.tag == "Player")
         {
             //   Debug.Log("Hit");
