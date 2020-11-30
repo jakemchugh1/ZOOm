@@ -73,6 +73,7 @@ public class RacerBehaviorScript : MonoBehaviour
 
     public float generalTimer;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -301,6 +302,22 @@ public class RacerBehaviorScript : MonoBehaviour
         
     }
 
+    void setChildrenLocalRotation(Quaternion rot)
+    {
+        for(int i = 0; i < transform.childCount; i++)
+        {
+            transform.GetChild(i).localRotation = rot;
+        }
+    }
+
+    void addChildrenLocalRotation(Quaternion rot)
+    {
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            transform.GetChild(i).localRotation *= rot;
+        }
+    }
+
     private void delayRacer()
     {
         if(currentSpeed > 0)
@@ -308,13 +325,13 @@ public class RacerBehaviorScript : MonoBehaviour
             currentSpeed -= Time.deltaTime * 3f;
             if (currentSpeed < 0) currentSpeed = 0;
         }
-        transform.GetChild(0).localRotation *= Quaternion.Euler(0, 360*Time.deltaTime, 0);
-        transform.GetChild(2).localRotation *= Quaternion.Euler(0, 360 * Time.deltaTime, 0);
+        addChildrenLocalRotation(Quaternion.Euler(0, 360 * Time.deltaTime, 0));
         generalTimer += Time.deltaTime;
         if(generalTimer > 2)
         {
-            transform.GetChild(0).localRotation = Quaternion.Euler(0, 0, 0);
-            transform.GetChild(2).localRotation = Quaternion.Euler(0, 0, 0);
+            setChildrenLocalRotation(Quaternion.Euler(0, 0, 0));
+            //transform.GetChild(0).localRotation = Quaternion.Euler(0, 0, 0);
+            //transform.GetChild(2).localRotation = Quaternion.Euler(0, 0, 0);
             generalTimer = 0;
             gotHit = false;
         }
@@ -445,7 +462,7 @@ public class RacerBehaviorScript : MonoBehaviour
                 turnLeft();
                 if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
                 {
-                    transform.GetChild(0).localRotation *= Quaternion.Euler(0, -45, 0);
+                    addChildrenLocalRotation(Quaternion.Euler(0, -45, 0));
                     driftingLeft = true;
                     driftTimer = 0;
                     audio[2].Play();
@@ -457,7 +474,7 @@ public class RacerBehaviorScript : MonoBehaviour
                 turnRight();
                 if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
                 {
-                    transform.GetChild(0).localRotation *= Quaternion.Euler(0, 45, 0);
+                    addChildrenLocalRotation(Quaternion.Euler(0, 45, 0));
                     driftingRight = true;
                     driftTimer = 0;
                     audio[2].Play();
@@ -486,7 +503,7 @@ public class RacerBehaviorScript : MonoBehaviour
         driftTimer += Time.deltaTime;
         if(driftTimer > driftLimit)
         {
-            transform.GetChild(0).localRotation = Quaternion.Euler(0, 0, 0);
+            setChildrenLocalRotation(Quaternion.Euler(0, 0, 0));
             driftingLeft = false;
         }
     }
@@ -502,7 +519,7 @@ public class RacerBehaviorScript : MonoBehaviour
         driftTimer += Time.deltaTime;
         if (driftTimer > driftLimit)
         {
-            transform.GetChild(0).localRotation = Quaternion.Euler(0, 0, 0);
+            setChildrenLocalRotation(Quaternion.Euler(0, 0, 0));
             driftingRight = false;
         }
     }
@@ -813,7 +830,6 @@ public class RacerBehaviorScript : MonoBehaviour
     {
         this.isSpeedup =true;
         this.startSpeedup = 0;
-                    Debug.Log(this.startSpeedup);
 
          if(backlight)
                 backlight.Play();
