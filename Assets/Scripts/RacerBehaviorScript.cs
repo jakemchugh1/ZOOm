@@ -300,14 +300,15 @@ public class RacerBehaviorScript : MonoBehaviour
 
     void onChangeValue()
     {
-         cam.GetComponent<AudioSource>().volume = volumSlider.value;
-         GameObject[] riders = GameObject.FindGameObjectsWithTag("Player");
+        cam.GetComponent<AudioSource>().volume = volumSlider.value;
+        GlobalVariables.volume = volumSlider.value;
+        GameObject[] riders = GameObject.FindGameObjectsWithTag("Player");
         foreach (GameObject rider in riders)
         {
             RacerBehaviorScript rs = rider.GetComponent<RacerBehaviorScript>();
             rs.setEngineVolume(volumSlider.value);
         }
-        GlobalVariables.volume = volumSlider.value;
+        if (behavior == 0) audio[2].volume = GlobalVariables.volume;
     }
 
     void finish()
@@ -730,13 +731,13 @@ public class RacerBehaviorScript : MonoBehaviour
                 {
                     checkpoint = collision.gameObject.transform;
                     getNextTarget();
-                    if (collision.gameObject.GetComponent<TileObject>().tileIndex == 1) lap++;
+                    if (collision.gameObject.GetComponent<TileObject>().tileIndex == 2) lap++;
                 }
                 else
                 {
                     checkpoint = collision.gameObject.transform;
                     getNextTarget();
-                    if(lap == 3)
+                    if(lap == 4)
                     {
                         finish();
                     }
