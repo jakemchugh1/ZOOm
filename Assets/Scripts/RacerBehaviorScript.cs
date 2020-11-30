@@ -56,6 +56,7 @@ public class RacerBehaviorScript : MonoBehaviour
     public RectTransform finishMenu;
 
     public RectTransform trashSprite;
+    public RectTransform busSprite;
 
     public bool isSpeedup;
     public float startSpeedup = 0;
@@ -248,8 +249,22 @@ public class RacerBehaviorScript : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Escape) && started && !GlobalVariables.finished) pause();
 
 
-            if (trashcollect) trashSprite.gameObject.SetActive(true);
-            else trashSprite.gameObject.SetActive(false);
+            if (trashcollect)
+            {
+                if (itemHeld == "trash")
+                {
+                    trashSprite.gameObject.SetActive(true);
+                }
+                else
+                {
+                    busSprite.gameObject.SetActive(true);
+                }
+            }
+            else
+            {
+                trashSprite.gameObject.SetActive(false);
+                busSprite.gameObject.SetActive(false);
+            }
         }
         if(this.isSpeedup)
         {

@@ -36,7 +36,7 @@ public class BusScript : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        
+        transform.GetChild(0).localRotation = Quaternion.Euler(0, 0, 0);
     }
 
     public void setTarget(Vector3 dir)
