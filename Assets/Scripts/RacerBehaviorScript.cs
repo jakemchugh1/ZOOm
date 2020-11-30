@@ -60,6 +60,9 @@ public class RacerBehaviorScript : MonoBehaviour
     public bool isSpeedup;
     public float startSpeedup = 0;
     public float maxSpeedup = 90;
+
+    public ParticleSystem particles;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -629,6 +632,7 @@ public class RacerBehaviorScript : MonoBehaviour
     {
         if(collision.gameObject.tag == "Tile")
         {
+                
             ///set direction indicator
             if(behavior == 0)
             {
@@ -667,9 +671,24 @@ public class RacerBehaviorScript : MonoBehaviour
                 }
                 
             }
-        }
+        }else if(collision.gameObject.tag == "Wall"||collision.gameObject.tag == "Player")
+            {
+               if(particles)
+                particles.Play();
+            }
     }
 
+    void OnCollisionExit(Collision collision)
+    {
+        if(collision.gameObject.tag == "Wall"||collision.gameObject.tag == "Player"){
+            if(particles){
+                if(particles.isPlaying)
+                    particles.Stop();   
+            }
+            
+        }
+        
+    }
     IEnumerator Countdown()
     {
         yield return new WaitForSeconds(4f);
