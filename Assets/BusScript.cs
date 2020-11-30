@@ -16,12 +16,14 @@ public class BusScript : MonoBehaviour
         maxDegreesRotation = 180;
         Physics.IgnoreCollision(racer.gameObject.GetComponent<BoxCollider>(), GetComponentInChildren<BoxCollider>(), true);
         transform.position = new Vector3(racer.position.x, 0, racer.position.z);
+        GetComponent<AudioSource>().volume = GlobalVariables.volume;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        if(FindObjectOfType<ScoreKeeperScript>().drivers[0] != racer.GetComponent<RacerBehaviorScript>())
+        GetComponent<AudioSource>().volume = GlobalVariables.volume;
+        if (FindObjectOfType<ScoreKeeperScript>().drivers[0] != racer.GetComponent<RacerBehaviorScript>())
         {
             transform.position = new Vector3(racer.position.x, 0, racer.position.z); //Vector3.Lerp(transform.position,new Vector3(racer.position.x, 0.5f, racer.position.z), 10*Time.deltaTime);
             if (target != null)
