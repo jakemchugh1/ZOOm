@@ -679,6 +679,7 @@ GameObject:
   - component: {fileID: 331421336}
   - component: {fileID: 331421339}
   - component: {fileID: 331421340}
+  - component: {fileID: 331421341}
   m_Layer: 0
   m_Name: Racer
   m_TagString: Player
@@ -751,8 +752,9 @@ MonoBehaviour:
   particles: {fileID: 948859083}
   driftTimer: 0
   driftLimit: 2
-  driftLeft: 0
-  driftRight: 0
+  driftingLeft: 0
+  driftingRight: 0
+  generalTimer: 0
 --- !u!65 &331421337
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -935,6 +937,102 @@ AudioSource:
     - serializedVersion: 3
       time: 0
       value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!82 &331421341
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 331421334}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 9c0bffa27324a3342b2d55332cd55eeb, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -2649,8 +2747,9 @@ MonoBehaviour:
   particles: {fileID: 0}
   driftTimer: 0
   driftLimit: 0
-  driftLeft: 0
-  driftRight: 0
+  driftingLeft: 0
+  driftingRight: 0
+  generalTimer: 0
 --- !u!65 &689943079
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9825,8 +9924,9 @@ MonoBehaviour:
   particles: {fileID: 0}
   driftTimer: 0
   driftLimit: 0
-  driftLeft: 0
-  driftRight: 0
+  driftingLeft: 0
+  driftingRight: 0
+  generalTimer: 0
 --- !u!65 &1344621820
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10327,8 +10427,9 @@ MonoBehaviour:
   particles: {fileID: 0}
   driftTimer: 0
   driftLimit: 0
-  driftLeft: 0
-  driftRight: 0
+  driftingLeft: 0
+  driftingRight: 0
+  generalTimer: 0
 --- !u!65 &1418215697
 BoxCollider:
   m_ObjectHideFlags: 0

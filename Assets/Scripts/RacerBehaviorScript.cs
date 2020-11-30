@@ -69,10 +69,12 @@ public class RacerBehaviorScript : MonoBehaviour
     public bool driftingLeft;
     public bool driftingRight;
 
+    public float generalTimer;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        generalTimer = 0;
         GlobalVariables.finished = false;
         GlobalVariables.paused = false;
         
@@ -273,12 +275,7 @@ public class RacerBehaviorScript : MonoBehaviour
             returnToTrack();
             if (gotHit)
             {
-                transform.position = new Vector3(checkpoint.position.x, 1, checkpoint.position.z);
-                transform.LookAt(checkpoint.GetComponent<TileObject>().nextTile.transform.position);
-                currentSpeed = 0;
-                timer = 0;
-                hovering = true;
-                gotHit = false;
+                delayRacer();
             }
             setAudioPitch();
             if (behavior != 0) dynamicAI();
@@ -296,6 +293,25 @@ public class RacerBehaviorScript : MonoBehaviour
             else finishMenu.gameObject.SetActive(true);
         }
         
+    }
+
+    private void delayRacer()
+    {
+        if(currentSpeed > 0)
+        {
+            currentSpeed -= Time.deltaTime * 3f;
+            if (currentSpeed < 0) currentSpeed = 0;
+        }
+        transform.GetChild(0).localRotation *= Quaternion.Euler(0, 180*Time.deltaTime, 0);
+        transform.GetChild(2).localRotation *= Quaternion.Euler(0, 180 * Time.deltaTime, 0);
+        generalTimer += Time.deltaTime;
+        if(generalTimer > 2)
+        {
+            transform.GetChild(0).localRotation = Quaternion.Euler(0, 0, 0);
+            transform.GetChild(2).localRotation = Quaternion.Euler(0, 0, 0);
+            generalTimer = 0;
+            gotHit = false;
+        }
     }
 
     void onChangeValue()
