@@ -12,10 +12,10 @@ public class trashbagScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        speed = 500;
+        speed = 5;
         rb = GetComponent<Rigidbody>();
         Instantiate<GameObject>(throwSound).transform.position = transform.position;
-        rb.AddForce(transform.forward * speed);
+        //rb.AddForce(transform.forward * speed);
         vel = rb.velocity;
     }
 
@@ -24,12 +24,12 @@ public class trashbagScript : MonoBehaviour
     {
         if (GlobalVariables.paused || GlobalVariables.finished)
         {
-            rb.velocity = new Vector3();
+            
 
         }
         else
         {
-            rb.velocity = vel;
+            transform.position += transform.forward * Time.deltaTime * speed;
         }
         
     }

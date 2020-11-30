@@ -736,7 +736,7 @@ MonoBehaviour:
   cam: {fileID: 2031737239}
   lap: 0
   camOffset: 0.75
-  trashcollect: 0
+  trashcollect: 1
   trashbag: {fileID: 5915174320805705592, guid: d91188e8467184948bf7f05358b6eedf,
     type: 3}
   gotHit: 0
@@ -749,6 +749,10 @@ MonoBehaviour:
   startSpeedup: 0
   maxSpeedup: 90
   particles: {fileID: 948859083}
+  driftTimer: 0
+  driftLimit: 2
+  driftLeft: 0
+  driftRight: 0
 --- !u!65 &331421337
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2643,6 +2647,10 @@ MonoBehaviour:
   startSpeedup: 0
   maxSpeedup: 90
   particles: {fileID: 0}
+  driftTimer: 0
+  driftLimit: 0
+  driftLeft: 0
+  driftRight: 0
 --- !u!65 &689943079
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9815,6 +9823,10 @@ MonoBehaviour:
   startSpeedup: 0
   maxSpeedup: 90
   particles: {fileID: 0}
+  driftTimer: 0
+  driftLimit: 0
+  driftLeft: 0
+  driftRight: 0
 --- !u!65 &1344621820
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10313,6 +10325,10 @@ MonoBehaviour:
   startSpeedup: 0
   maxSpeedup: 90
   particles: {fileID: 0}
+  driftTimer: 0
+  driftLimit: 0
+  driftLeft: 0
+  driftRight: 0
 --- !u!65 &1418215697
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -63,9 +63,16 @@ public class RacerBehaviorScript : MonoBehaviour
 
     public ParticleSystem particles;
 
+    public float driftTimer;
+    public float driftLimit;
+
+    public bool driftingLeft;
+    public bool driftingRight;
+
     // Start is called before the first frame update
     void Start()
     {
+        
         GlobalVariables.finished = false;
         GlobalVariables.paused = false;
         
@@ -163,6 +170,7 @@ public class RacerBehaviorScript : MonoBehaviour
                 break;
         }
         setAudioPitch();
+        
     }
 
     void setStats(Animal animal)
@@ -173,22 +181,22 @@ public class RacerBehaviorScript : MonoBehaviour
             case (Animal.Bear):
                 maxSpeed = 2.5f;
                 acceleration = 1f;
-                turn = 0.1f;
+                turn = 0.05f;
                 break;
             case (Animal.Monkey):
                 maxSpeed = 2.5f;
                 acceleration = .8f;
-                turn = 0.19f;
+                turn = 0.09f;
                 break;
             case (Animal.Penguin):
                 maxSpeed = 2.5f;
                 acceleration = .7f;
-                turn = 0.21f;
+                turn = 0.07f;
                 break;
             case (Animal.Rabbit):
                 maxSpeed = 2.5f;
                 acceleration = 0.5f;
-                turn = 0.25f;
+                turn = 0.1f;
                 break;
         }
     }
@@ -335,7 +343,7 @@ public class RacerBehaviorScript : MonoBehaviour
         }
         else if (place == 3)
         {
-            behavior = 3;
+            behavior = 2;
         }
         else if (place == 4)
         {
@@ -383,33 +391,97 @@ public class RacerBehaviorScript : MonoBehaviour
 
     void player()
     {
-        if (Input.GetKey(KeyCode.W))
+        ///if the player is drifting to the left
+        if (driftingLeft)
         {
-            accelerate();
+            driftLeft();
         }
-        if (Input.GetKey(KeyCode.S))
+        //if the player is drifting to the right
+        else if (driftingRight)
         {
-            reverse();
+            driftRight();
         }
-        if(!Input.GetKey(KeyCode.S) && !Input.GetKey(KeyCode.W))
+        //else normal inputs
+        else
         {
-            brake();
+            if (Input.GetKey(KeyCode.W))
+            {
+                accelerate();
+            }
+            if (Input.GetKey(KeyCode.S))
+            {
+                reverse();
+            }
+            if (!Input.GetKey(KeyCode.S) && !Input.GetKey(KeyCode.W))
+            {
+                brake();
+            }
+            if (Input.GetKey(KeyCode.A))
+            {
+
+                turnLeft();
+                if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
+                {
+                    transform.GetChild(0).localRotation *= Quaternion.Euler(0, -45, 0);
+                    driftingLeft = true;
+                    driftTimer = 0;
+                    audio[2].Play();
+                }
+                
+            }
+            if (Input.GetKey(KeyCode.D))
+            {
+                turnRight();
+                if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
+                {
+                    transform.GetChild(0).localRotation *= Quaternion.Euler(0, 45, 0);
+                    driftingRight = true;
+                    driftTimer = 0;
+                    audio[2].Play();
+                }
+            }
+            moveForward();
+            if (Input.GetKey(KeyCode.Space))
+            {
+                throwTrash();
+            }
         }
+        
+
+
+    }
+
+    void driftLeft()
+    {
+        moveForward();
+        turnLeft();
+
         if (Input.GetKey(KeyCode.A))
         {
             turnLeft();
         }
+        driftTimer += Time.deltaTime;
+        if(driftTimer > driftLimit)
+        {
+            transform.GetChild(0).localRotation = Quaternion.Euler(0, 0, 0);
+            driftingLeft = false;
+        }
+    }
+
+    void driftRight()
+    {
+        turnRight();
         if (Input.GetKey(KeyCode.D))
         {
             turnRight();
         }
         moveForward();
-        if (Input.GetKey(KeyCode.Space))
+        driftTimer += Time.deltaTime;
+        if (driftTimer > driftLimit)
         {
-            throwTrash();
+            transform.GetChild(0).localRotation = Quaternion.Euler(0, 0, 0);
+            driftingRight = false;
         }
-
-
     }
 
     void setCamera()
@@ -435,6 +507,7 @@ public class RacerBehaviorScript : MonoBehaviour
     {
         setStats(selectAnimal);
         maxSpeed *= 1.1f;
+        turn *= 1.5f;
         if (getNextTile())
         {
             
@@ -449,6 +522,7 @@ public class RacerBehaviorScript : MonoBehaviour
     {
         setStats(selectAnimal);
         maxSpeed *= 1.3f;
+        turn *= 2f;
         if (getNextTile())
         {
             
@@ -585,6 +659,9 @@ public class RacerBehaviorScript : MonoBehaviour
 
     void freeze()
     {
+        transform.GetChild(0).localRotation = Quaternion.Euler(0, 0, 0);
+        driftingLeft = false;
+        driftingRight = false;
         currentSpeed = 0;
         rb.useGravity = false;
         rb.velocity = new Vector3();
