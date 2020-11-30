@@ -23,6 +23,8 @@ public class WelcomeScript : MonoBehaviour
 
     public Toggle toggleBear, toggleMonkey, togglePenguin, toggleRabbit;
     public Toggle toggleTrack1, toggleTrack2 , toggleTrack3, toggleTrackCustom;
+    public Toggle  volumToggle;
+    public Camera mainCam;
 
     
 
@@ -32,8 +34,10 @@ public class WelcomeScript : MonoBehaviour
         Button btn = startBtn.GetComponent<Button>();
 		btn.onClick.AddListener(startedClick);   
 
-        
-        
+        Toggle t = volumToggle.GetComponent<Toggle>();
+        t.onValueChanged.AddListener(delegate {
+            ToggleVolume(t);
+        });
     }
 
     // Update is called once per frame
@@ -87,6 +91,12 @@ public class WelcomeScript : MonoBehaviour
 
     }
 
+    void ToggleVolume(Toggle t)
+    {
+        mainCam.GetComponent<AudioSource>().mute = t.isOn;
+
+
+    }
     void startedClick()
     {
        // Select Animal
