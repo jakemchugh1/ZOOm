@@ -27,6 +27,10 @@ public class WelcomeScript : MonoBehaviour
     public Toggle  volumToggle;
     public Camera mainCam;
 
+    public Button lapsPlus;
+    public Button lapsMinus;
+    public TMPro.TextMeshProUGUI lapsText;
+
     
 
     // Start is called before the first frame update
@@ -41,6 +45,15 @@ public class WelcomeScript : MonoBehaviour
         });
         volumeSlider.value = GlobalVariables.volume;
         volumeSlider.onValueChanged.AddListener(delegate { onValueChanged(); });
+        lapsPlus.onClick.AddListener(delegate { changeLaps(1); });
+        lapsMinus.onClick.AddListener(delegate { changeLaps(-1); });
+    }
+
+    public void changeLaps(int change)
+    {
+        GlobalVariables.numLaps += change;
+        if (GlobalVariables.numLaps < 1) GlobalVariables.numLaps = 1;
+        else if (GlobalVariables.numLaps > 10) GlobalVariables.numLaps = 10;
     }
 
     void onValueChanged()
@@ -52,6 +65,7 @@ public class WelcomeScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        lapsText.text = "Number of Laps: " + GlobalVariables.numLaps;
         ScrollSnap s = hss.GetComponent<ScrollSnap>();
         //Debug.Log(s.CurrentPage());
         switch (s.CurrentPage())

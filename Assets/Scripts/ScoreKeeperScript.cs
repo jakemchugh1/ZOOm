@@ -25,14 +25,14 @@ public class ScoreKeeperScript : MonoBehaviour
         {
             if(drivers[0].lap == 0)
             {
-                lapText.text = ("Lap: " + 1 + "/3");
-            }else if(drivers[0].lap > 2)
+                lapText.text = ("Lap: " + 1 + "/"+GlobalVariables.numLaps);
+            }else if(drivers[0].lap >= GlobalVariables.numLaps)
             {
-                lapText.text = ("Lap: " + 3 + "/3");
+                lapText.text = ("Lap: " + GlobalVariables.numLaps + "/" + GlobalVariables.numLaps);
             }
             else
             {
-                lapText.text = ("Lap: " + drivers[0].lap + "/3");
+                lapText.text = ("Lap: " + drivers[0].lap + "/" + GlobalVariables.numLaps);
             }
             
             SortFirst();

@@ -302,8 +302,8 @@ public class RacerBehaviorScript : MonoBehaviour
             currentSpeed -= Time.deltaTime * 3f;
             if (currentSpeed < 0) currentSpeed = 0;
         }
-        transform.GetChild(0).localRotation *= Quaternion.Euler(0, 180*Time.deltaTime, 0);
-        transform.GetChild(2).localRotation *= Quaternion.Euler(0, 180 * Time.deltaTime, 0);
+        transform.GetChild(0).localRotation *= Quaternion.Euler(0, 360*Time.deltaTime, 0);
+        transform.GetChild(2).localRotation *= Quaternion.Euler(0, 360 * Time.deltaTime, 0);
         generalTimer += Time.deltaTime;
         if(generalTimer > 2)
         {
@@ -753,7 +753,7 @@ public class RacerBehaviorScript : MonoBehaviour
                 {
                     checkpoint = collision.gameObject.transform;
                     getNextTarget();
-                    if(lap == 4)
+                    if(lap == GlobalVariables.numLaps + 1)
                     {
                         finish();
                     }

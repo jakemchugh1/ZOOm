@@ -12,6 +12,8 @@ public static class GlobalVariables
     public static bool paused;
     public static float volume = 0.5f;
 
+    public static int numLaps = 3;
+
     public static string trackLink = "https://jakemchugh1.github.io/ZOOm-firstDemo/Track";
     public static string track1Link = "https://jakemchugh1.github.io/ZOOm-firstDemo/Track1";
     public static string track2Link = "https://jakemchugh1.github.io/ZOOm-firstDemo/Track2";
