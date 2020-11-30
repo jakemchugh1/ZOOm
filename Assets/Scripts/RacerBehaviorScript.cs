@@ -59,9 +59,11 @@ public class RacerBehaviorScript : MonoBehaviour
 
     public bool isSpeedup;
     public float startSpeedup = 0;
-    public float maxSpeedup = 90;
+    public float maxSpeedup = 30;
 
     public ParticleSystem particles;
+    public ParticleSystem backlight;
+
 
     public float driftTimer;
     public float driftLimit;
@@ -250,11 +252,15 @@ public class RacerBehaviorScript : MonoBehaviour
             }
             else
             {
+                 if(backlight)
+                backlight.Stop();
                 this.startSpeedup = 0;
                 this.isSpeedup = false;
                  var volume = gameObject.GetComponent<Volume>();
                 if(volume)
                 volume.enabled = false;
+               
+
             }
         }
     }
@@ -766,10 +772,10 @@ public class RacerBehaviorScript : MonoBehaviour
                 
             }
         }else if(collision.gameObject.tag == "Wall"||collision.gameObject.tag == "Player")
-            {
+        {
                if(particles)
                 particles.Play();
-            }
+        }
     }
 
     void OnCollisionExit(Collision collision)
@@ -807,5 +813,9 @@ public class RacerBehaviorScript : MonoBehaviour
     {
         this.isSpeedup =true;
         this.startSpeedup = 0;
+                    Debug.Log(this.startSpeedup);
+
+         if(backlight)
+                backlight.Play();
     }
 }
