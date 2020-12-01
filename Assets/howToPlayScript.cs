@@ -6,18 +6,16 @@ using UnityEngine.UI;
 
 public class howToPlayScript : MonoBehaviour
 {
-    public Sprite first;
-    public Sprite second;
+    public List<Sprite> list;
 
-    bool pressed;
+    public int spriteIndex;
 
     Image mainImage;
     // Start is called before the first frame update
     void Start()
     {
         mainImage = GetComponent<Image>();
-        mainImage.sprite = first;
-        pressed = false;
+        spriteIndex = 0;
     }
 
     // Update is called once per frame
@@ -25,14 +23,14 @@ public class howToPlayScript : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (!pressed)
+            spriteIndex++;
+            if(spriteIndex >= list.Count)
             {
-                pressed = true;
-                mainImage.sprite = second;
+                SceneManager.LoadScene(2);
             }
             else
             {
-                SceneManager.LoadScene(2);
+                mainImage.sprite = list[spriteIndex];
             }
         }
     }

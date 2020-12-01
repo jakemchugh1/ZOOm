@@ -45,4 +45,9 @@ public class BusScript : MonoBehaviour
     {
         target = Quaternion.LookRotation(dir);
     }
+
+    private void OnDestroy()
+    {
+        racer.gameObject.GetComponent<RacerBehaviorScript>().currentSpeed = 0;
+    }
 }
