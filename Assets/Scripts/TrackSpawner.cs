@@ -367,8 +367,10 @@ public class TrackSpawner : MonoBehaviour
             preTile = newTile;
             tiles.Add(newTile);
             lastTile = newTile;
+       
         }
         lastTile.GetComponent<TileObject>().nextTile = firstTile.GetComponent<TileObject>();
+        
         
     }
 
