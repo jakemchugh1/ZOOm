@@ -250,6 +250,8 @@ public class MapGenerator : MonoBehaviour {
 		 isCreating = false;
 		 try
         {
+			if(this.tileList.Count!=0)
+			AdjustLastTile();
             // Create a FileStream that will write data to file.
             FileStream writerFileStream = 
                 new FileStream("Track", FileMode.Create, FileAccess.Write);
@@ -294,5 +296,14 @@ public class MapGenerator : MonoBehaviour {
 			return !(c1 == c2);
 		}
 
+	}
+
+	void AdjustLastTile()
+	{
+		TileData last = this.tileList[this.tileList.Count-1];
+		TileData first = this.tileList[0];
+
+		TileData t = new TileData(last.exitDirection, first.exitDirection);
+		this.tileList.Add(t);
 	}
 }

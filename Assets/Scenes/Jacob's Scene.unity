@@ -5489,7 +5489,7 @@ MonoBehaviour:
   busSprite: {fileID: 438379810}
   isSpeedup: 0
   startSpeedup: 0
-  maxSpeedup: 90
+  maxSpeedup: 30
   particles: {fileID: 948859083}
   backlight: {fileID: 231954940}
   driftTimer: 0

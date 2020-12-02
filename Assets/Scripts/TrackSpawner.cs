@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-//using System.IO;
+using System.IO;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 
@@ -51,8 +51,8 @@ public class TrackSpawner : MonoBehaviour
         this.tileList = new List<TileData>();
         this.formatter = new BinaryFormatter();
         // spawnTiles();
-        LoadDataHardcoded();
-
+        // LoadDataHardcoded();
+        LoadData();
         // racers = FindObjectsOfType<NavMeshAgent>();
 
         // navMesh = GetComponent<NavMeshSurface>();
@@ -67,81 +67,7 @@ public class TrackSpawner : MonoBehaviour
     }
 
 
-    void spawnTiles()
-    {
-        for(int i = 0; i < numbOfTiles; i++)
-        {  
-            Direction exitDirection;
-            if(i==0) 
-                exitDirection = Direction.Origin;
-            else
-                exitDirection = (Direction)Random.Range(0, 3);        
-             switch (exitDirection)
-             {
-                case(Direction.Up):
-                    spawnPosition =  new Vector3(0,0,tileHeight);
-                break;    
-                case(Direction.Right):
-                    spawnPosition =  new Vector3(tileWidth,0,0);
-                break; 
-                case(Direction.Left):
-                    spawnPosition =  new Vector3(-tileWidth,0,0);
-                break; 
-                case(Direction.Down):
-                    spawnPosition =  new Vector3(0,0,-tileHeight);
-                break; 
-                default:
-                    spawnPosition =  new Vector3(0,0,0);
-                break; 
-
-             }  
-            
-            spawnOrigin += spawnPosition;
-            GameObject newTile = null;
-            if(preTile){
-                if(preTile.GetComponent<TileObject>().exitDirection  == Direction.Left|| preTile.GetComponent<TileObject>().exitDirection == Direction.Right)
-                    newTile= Instantiate( tile, spawnOrigin,  Quaternion.Euler(0, 90, 0),transform);
-                else
-                    newTile= Instantiate( tile, spawnOrigin, Quaternion.identity,transform);
-             newTile.GetComponent<TileObject>().entryDirection = preTile.GetComponent<TileObject>().exitDirection ;
-
-            }else
-                newTile= Instantiate( tile, spawnOrigin, Quaternion.identity,transform);
-            
-            newTile.GetComponent<TileObject>().exitDirection = exitDirection;
-         
-            preTile = newTile;
-            tiles.Add(newTile);
-        }
-        foreach (var obj in tiles)
-            {
-                TileData t = new TileData(obj.GetComponent<TileObject>().entryDirection, obj.GetComponent<TileObject>().exitDirection);
-
-                this.tileList.Add(t);
-            }
-            Save();
-    }
-    public void Save()
-    {
-        // Gain code access to the file that we are going
-        // to write to
-
-        try
-        {
-            // Create a FileStream that will write data to file.
-           // FileStream writerFileStream = 
-           //     new FileStream(GlobalVariables.selectedFile, FileMode.Create, FileAccess.Write);
-            // Save our dictionary of friends to file
-           // this.formatter.Serialize(writerFileStream, this.tileList);
- 
-            // Close the writerFileStream when we are done.
-           // writerFileStream.Close();
-        }
-        catch (System.Exception e) {
-            Debug.Log(e);
-        } // end try-catch
-    }
-    /*public void LoadData() 
+    public void LoadData() 
     {
       
         // Check if we had previously Save information of our friends
@@ -160,7 +86,11 @@ public class TrackSpawner : MonoBehaviour
                 this.tileList = (List<TileData>)this.formatter.Deserialize(readerFileStream);
                 // Close the readerFileStream when we are done
                 readerFileStream.Close();
- 
+            for(int i = 0; i < this.tileList.Count; i++){  
+            TileData t = tileList[i];
+
+            Debug.Log(i+" "+t.entryDirection+" "+t.exitDirection);
+             }
             } 
             catch (System.Exception e) 
             {
@@ -172,7 +102,7 @@ public class TrackSpawner : MonoBehaviour
         loadTiles();
          
     } // end public bool Load()
-    */
+    
     public void LoadDataFromWeb(string url)
     {
 
@@ -428,9 +358,6 @@ public class TrackSpawner : MonoBehaviour
 
             if (preTile)
             {
-
-                //preTile.GetComponent<TileObject>().nextTile = newTile.GetComponent<TileObject>();
-                //newTile.GetComponent<TileObject>().previousTile = preTile.GetComponent<TileObject>();
                 preTile.GetComponent<TileObject>().nextTile = newTile.GetComponent<TileObject>();
                 newTile.GetComponent<TileObject>().entryDirection = preTile.GetComponent<TileObject>().exitDirection;
             }
