@@ -816,15 +816,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eda42b8def3d6cc4b9fd082b24d34722, type: 3}
---- !u!4 &8861644945318755681 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: eda42b8def3d6cc4b9fd082b24d34722,
-    type: 3}
-  m_PrefabInstance: {fileID: 4575753905195292283}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &5521900195078131570 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: eda42b8def3d6cc4b9fd082b24d34722,
+    type: 3}
+  m_PrefabInstance: {fileID: 4575753905195292283}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &8861644945318755681 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: eda42b8def3d6cc4b9fd082b24d34722,
     type: 3}
   m_PrefabInstance: {fileID: 4575753905195292283}
   m_PrefabAsset: {fileID: 0}
@@ -990,6 +990,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: straightWalls
+      objectReference: {fileID: 0}
+    - target: {fileID: 2864843776098347441, guid: 22464fdf16f3e344ea0983b0aad4cc10,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 22464fdf16f3e344ea0983b0aad4cc10, type: 3}

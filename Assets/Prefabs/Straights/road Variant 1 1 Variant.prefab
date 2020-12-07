@@ -276,6 +276,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: road Variant 1 1 Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 9174560134615898600, guid: 3bca0cbfbc32eff4897dec3512b85888,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1424237184131297226, guid: 3bca0cbfbc32eff4897dec3512b85888, type: 3}
     - {fileID: 5323577860161007262, guid: 3bca0cbfbc32eff4897dec3512b85888, type: 3}

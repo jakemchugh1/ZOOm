@@ -18,8 +18,11 @@ public class TrackSpawner : MonoBehaviour
     public GameObject tileIntersect;
 
     public GameObject tileTurnLR;
+    
+    public GameObject building1;
 
-       
+    public List<GameObject> buildings;
+
     public int numbOfTiles;
 
     public List<GameObject> tiles;
@@ -89,7 +92,7 @@ public class TrackSpawner : MonoBehaviour
             for(int i = 0; i < this.tileList.Count; i++){  
             TileData t = tileList[i];
 
-            Debug.Log(i+" "+t.entryDirection+" "+t.exitDirection);
+            // Debug.Log(i+" "+t.entryDirection+" "+t.exitDirection);
              }
             } 
             catch (System.Exception e) 
@@ -367,11 +370,47 @@ public class TrackSpawner : MonoBehaviour
             preTile = newTile;
             tiles.Add(newTile);
             lastTile = newTile;
+            if((newTile.GetComponent<TileObject>().exitDirection==Direction.Left)&&(newTile.GetComponent<TileObject>().entryDirection==Direction.Left)){
+                Vector3 buildingPosition1 = spawnOrigin;
+                buildingPosition1.z+=tileHeight+1.5f;
+                Instantiate( getRandomBuilding(), buildingPosition1, Quaternion.Euler(0, 90, 0),transform);
+                Vector3 buildingPosition2 = spawnOrigin;
+                buildingPosition2.z-=tileHeight+0.0f;
+                Instantiate( getRandomBuilding(), buildingPosition2, Quaternion.Euler(0, 0, 0),transform);
+
+            }
+             else if((newTile.GetComponent<TileObject>().exitDirection==Direction.Right)&&(newTile.GetComponent<TileObject>().entryDirection==Direction.Right)){
+                Vector3 buildingPosition1 = spawnOrigin;
+                buildingPosition1.z-=tileHeight+0.0f;
+                Instantiate( getRandomBuilding(), buildingPosition1, Quaternion.Euler(0, 90, 0),transform);
+                Vector3 buildingPosition2 = spawnOrigin;
+                buildingPosition2.z+=tileHeight+1.5f;
+                Instantiate( getRandomBuilding(), buildingPosition2, Quaternion.Euler(0, 0, 0),transform);
+
+            }
+             else if((newTile.GetComponent<TileObject>().exitDirection==Direction.Up)&&(newTile.GetComponent<TileObject>().entryDirection==Direction.Up)){
+                Vector3 buildingPosition1 = spawnOrigin;
+                buildingPosition1.x+=tileHeight+0.0f;
+                Instantiate( getRandomBuilding(), buildingPosition1, Quaternion.Euler(0, 0, 0),transform);
+                Vector3 buildingPosition2 = spawnOrigin;
+                buildingPosition2.x-=tileHeight+1.5f;
+                Instantiate( getRandomBuilding(), buildingPosition2, Quaternion.Euler(0, 90,0),transform);
+
+            }
+        //   else if((newTile.GetComponent<TileObject>().exitDirection==Direction.Down)&&(newTile.GetComponent<TileObject>().entryDirection==Direction.Down)){
+        //         Vector3 buildingPosition1 = spawnOrigin;
+        //         buildingPosition1.x-=tileHeight+0.0f;
+        //         Instantiate( getRandomBuilding(), buildingPosition1, Quaternion.Euler(0, 90, 0),transform);
+        //         Vector3 buildingPosition2 = spawnOrigin;
+        //         buildingPosition2.x+=tileHeight+1.5f;
+        //         Instantiate( getRandomBuilding(), buildingPosition2, Quaternion.Euler(0, 0,0),transform);
+
+        //     }
        
         }
         lastTile.GetComponent<TileObject>().nextTile = firstTile.GetComponent<TileObject>();
         
-        
+
     }
 
     GameObject getRandomStraight()
@@ -382,6 +421,10 @@ public class TrackSpawner : MonoBehaviour
     GameObject getRandomCorner()
     {
         return corners[Random.Range(0, corners.Count)];
+    }
+     GameObject getRandomBuilding()
+    {
+        return buildings[Random.Range(0, buildings.Count)];
     }
 
 }
