@@ -734,7 +734,7 @@ public class RacerBehaviorScript : MonoBehaviour
     void returnToTrack()
     {
 
-        if (transform.position.y < -10 || Vector3.Dot(transform.up, Vector3.up) <0)
+        if (transform.position.y < -1 || Vector3.Dot(transform.up, Vector3.up) <0)
         {
             transform.position = new Vector3(checkpoint.position.x, 1, checkpoint.position.z);
 
@@ -743,6 +743,16 @@ public class RacerBehaviorScript : MonoBehaviour
             timer = 0;
             hovering = true;
         }
+    }
+
+    void outOfBounds()
+    {
+        transform.position = new Vector3(checkpoint.position.x, 1, checkpoint.position.z);
+
+        transform.LookAt(checkpoint.GetComponent<TileObject>().nextTile.transform.position);
+        currentSpeed = 0;
+        timer = 0;
+        hovering = true;
     }
 
     void freeze()
