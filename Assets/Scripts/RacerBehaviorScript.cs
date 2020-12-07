@@ -182,7 +182,8 @@ public class RacerBehaviorScript : MonoBehaviour
                 break;
         }
         setAudioPitch();
-        
+        checkVolume();
+
     }
 
     void setStats(Animal animal)
@@ -370,6 +371,17 @@ public class RacerBehaviorScript : MonoBehaviour
         }
         if (behavior == 0) audio[2].volume = GlobalVariables.volume;
     }
+    void checkVolume(){
+         cam.GetComponent<AudioSource>().mute = GlobalVariables.muted;
+         GameObject[] riders = GameObject.FindGameObjectsWithTag("Player");
+        foreach (GameObject rider in riders)
+        {
+            RacerBehaviorScript rs = rider.GetComponent<RacerBehaviorScript>();
+           rs.muteEngineVolume();
+        }
+        if (behavior == 0) audio[2].mute = GlobalVariables.muted;
+
+    }
 
     void finish()
     {
@@ -427,6 +439,15 @@ public class RacerBehaviorScript : MonoBehaviour
         for(int i = 0; i < audio.Length; i++)
         {
             audio[i].volume = value*maxEngineVolume;
+        }
+    }
+    public void muteEngineVolume()
+    {
+        audio = GetComponents<AudioSource>();
+
+        for(int i = 0; i < audio.Length; i++)
+        {
+            audio[i].mute = GlobalVariables.muted;
         }
     }
 

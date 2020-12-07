@@ -11,6 +11,7 @@ public static class GlobalVariables
     public static bool finished = false;
     public static bool paused;
     public static float volume = 0.5f;
+    public static bool muted = false;
 
     public static int numLaps = 1;
 

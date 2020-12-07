@@ -117,7 +117,7 @@ public class WelcomeScript : MonoBehaviour
     void ToggleVolume(Toggle t)
     {
         mainCam.GetComponent<AudioSource>().mute = t.isOn;
-
+        GlobalVariables.muted=t.isOn;
 
     }
     void startedClick()
