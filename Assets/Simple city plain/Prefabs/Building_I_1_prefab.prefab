@@ -11,10 +11,11 @@ GameObject:
   - component: {fileID: 4414472472894700}
   - component: {fileID: 33867558787308652}
   - component: {fileID: 23281512312108124}
-  - component: {fileID: 64704879964407052}
+  - component: {fileID: 2691207910405109730}
+  - component: {fileID: 6606019647748413590}
   m_Layer: 0
   m_Name: Building_I_1
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -96,8 +97,8 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &64704879964407052
-MeshCollider:
+--- !u!65 &2691207910405109730
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -106,10 +107,25 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: a31ede3a68c1fc642a73d7ab6870b43e, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 0.1389147, y: 0.07044804, z: 0.1638588}
+  m_Center: {x: 0.056016773, y: 0.042600013, z: 0.0819294}
+--- !u!54 &6606019647748413590
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1277488071553818}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1 &1459596859188152
 GameObject:
   m_ObjectHideFlags: 0
@@ -203,7 +219,7 @@ GameObject:
   - component: {fileID: 4421704745708670}
   m_Layer: 0
   m_Name: Building_I_1_prefab
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
