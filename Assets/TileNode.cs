@@ -13,6 +13,7 @@ public class TileNode : MonoBehaviour
         spawnPower();
         timer = 0;
         limit = 60;
+        gameObject.AddComponent<SphereCollider>().isTrigger = true;
     }
 
     void Update()
@@ -44,6 +45,24 @@ public class TileNode : MonoBehaviour
         }
         
     }
+
+    private void OnTriggerEnter(Collider collision)
+    {
+        if(collision.gameObject.tag == "Building")
+        {
+            Transform p = transform.parent;
+            transform.SetParent(transform.parent.parent);
+
+            p.GetComponent<TileObject>().nodes = p.GetComponentsInChildren<TileNode>();
+            Destroy(gameObject);
+        }
+        
+       // if (other.gameObject.layer == 11) 
+    }
+
+    //oncoll
+
+
 
 
 }

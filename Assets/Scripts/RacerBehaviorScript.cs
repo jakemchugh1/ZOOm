@@ -854,10 +854,17 @@ public class RacerBehaviorScript : MonoBehaviour
                 }
                 
             }
-        }else if(collision.gameObject.tag == "Wall"||collision.gameObject.tag == "Player")
+        }
+        else if (collision.gameObject.tag == "Player")
         {
-               if(particles)
+            if (particles)
                 particles.Play();
+        }
+        else if (collision.gameObject.tag == "Wall")
+        {
+            if (particles)
+                particles.Play();
+            currentSpeed = 0;
         }
     }
 
