@@ -300,10 +300,10 @@ public class MapGenerator : MonoBehaviour {
 
 	void AdjustLastTile()
 	{
-		TileData last = this.tileList[this.tileList.Count-1];
-		TileData first = this.tileList[0];
+		// TileData last = this.tileList[this.tileList.Count-1];
+		// TileData first = this.tileList[0];
 
-		TileData t = new TileData(last.exitDirection, first.exitDirection);
-		this.tileList.Add(t);
+		// TileData t = new TileData(last.exitDirection, first.exitDirection);
+		// this.tileList.Add(t);
 	}
 }
