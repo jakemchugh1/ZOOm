@@ -5493,7 +5493,7 @@ MonoBehaviour:
   particles: {fileID: 948859083}
   backlight: {fileID: 231954940}
   driftTimer: 0
-  driftLimit: 2
+  driftLimit: 1.4
   driftingLeft: 0
   driftingRight: 0
   generalTimer: 0
