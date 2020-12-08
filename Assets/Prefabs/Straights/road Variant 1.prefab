@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1335862176146893401}
   - component: {fileID: 8610298548312217594}
   - component: {fileID: 3002402136187609917}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: road Variant 1
   m_TagString: Tile
   m_Icon: {fileID: 0}
@@ -149,7 +149,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6875318147467505347}
   - component: {fileID: 3063199526676439720}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Node (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -192,7 +192,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4394070758860328378}
   - component: {fileID: 8752744732249660779}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Node (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -235,7 +235,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1865251927694036534}
   - component: {fileID: 6667027406063005333}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Node
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -278,7 +278,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9038183005170547465}
   - component: {fileID: 5188484654358516701}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Node (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -321,7 +321,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4205448995947132910}
   - component: {fileID: 747373458698107532}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Node (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -416,6 +416,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2028067112722289365, guid: 22464fdf16f3e344ea0983b0aad4cc10,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 2864843776098347441, guid: 22464fdf16f3e344ea0983b0aad4cc10,
         type: 3}
       propertyPath: m_Name
@@ -425,6 +430,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2864843776098347441, guid: 22464fdf16f3e344ea0983b0aad4cc10,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6744860678354773601, guid: 22464fdf16f3e344ea0983b0aad4cc10,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 22464fdf16f3e344ea0983b0aad4cc10, type: 3}

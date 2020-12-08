@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1503881003296969965}
   - component: {fileID: 2963386208733433360}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Node (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53,7 +53,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7465819165079092472}
   - component: {fileID: 8092932732701170612}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Node (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1905412457250386673}
   - component: {fileID: 6221708947132635728}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Node (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -139,7 +139,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5744085107173917805}
   - component: {fileID: 717447807493321249}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Node (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -182,7 +182,7 @@ GameObject:
   m_Component:
   - component: {fileID: 157053835501552426}
   - component: {fileID: 3139558458042767504}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Node
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -229,7 +229,7 @@ GameObject:
   - component: {fileID: 8261421782017209005}
   - component: {fileID: 7984912717884405312}
   - component: {fileID: 1031358243112538845}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: road_intersection_L Variant 1 2
   m_TagString: Tile
   m_Icon: {fileID: 0}
@@ -366,7 +366,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4084026277902664741}
   - component: {fileID: 2007682862740693099}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Node (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -486,6 +486,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: street_lamp_3 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 1364837033299835322, guid: ea787d1ecd0957340b18cf8fabacaa89,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 1364837033300059546, guid: ea787d1ecd0957340b18cf8fabacaa89,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -550,6 +555,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7094158215888127955, guid: ea787d1ecd0957340b18cf8fabacaa89,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea787d1ecd0957340b18cf8fabacaa89, type: 3}

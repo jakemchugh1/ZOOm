@@ -23,7 +23,7 @@ public class WelcomeScript : MonoBehaviour
     public Slider volumeSlider;
 
     public Toggle toggleBear, toggleMonkey, togglePenguin, toggleRabbit;
-    public Toggle toggleTrack1, toggleTrack2 , toggleTrack3, toggleTrackCustom;
+    public Toggle toggleTrack1, toggleTrack2 , toggleTrack3, toggleTrackCustom, toggleTrack4;
     public Toggle  volumToggle;
     public Camera mainCam;
 
@@ -148,7 +148,8 @@ public class WelcomeScript : MonoBehaviour
        GlobalVariables.selectedFile = "Track2";
        else if(t3.isOn)
        GlobalVariables.selectedFile = "Track3";
-
+        else if(t3.isOn)
+       GlobalVariables.selectedFile = "Track4";
        SceneManager.LoadScene(3);
        
 

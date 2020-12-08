@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5464300140655643273}
   - component: {fileID: 7091230354920247603}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Node
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57,7 +57,7 @@ GameObject:
   - component: {fileID: 4278024853791193870}
   - component: {fileID: 2821773897713909731}
   - component: {fileID: 5163642491193236350}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: road_intersection_L Variant (1)
   m_TagString: Tile
   m_Icon: {fileID: 0}
@@ -196,7 +196,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8166591716203466118}
   - component: {fileID: 5918951787372947912}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Node (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -239,7 +239,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6712109927729601870}
   - component: {fileID: 6978608724354156467}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Node (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -282,7 +282,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3342521253442155867}
   - component: {fileID: 4158846478552633879}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Node (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -353,7 +353,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6019497612632669010}
   - component: {fileID: 2283075377108521971}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Node (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -396,7 +396,7 @@ GameObject:
   m_Component:
   - component: {fileID: 454856277881638350}
   - component: {fileID: 4615078413526301570}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Node (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -439,6 +439,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: c9cfba535676c5746aea07a0f248194b, type: 3}
       propertyPath: m_Name
       value: tree_7
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: c9cfba535676c5746aea07a0f248194b, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c9cfba535676c5746aea07a0f248194b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -516,6 +520,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: c9cfba535676c5746aea07a0f248194b, type: 3}
       propertyPath: m_Name
       value: tree_7 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: c9cfba535676c5746aea07a0f248194b, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c9cfba535676c5746aea07a0f248194b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -660,6 +668,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: bench_2_v_1
       objectReference: {fileID: 0}
+    - target: {fileID: 8771007298540033878, guid: d8df213ee3d47ea4fbd3bbcbc0d272f6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d8df213ee3d47ea4fbd3bbcbc0d272f6, type: 3}
 --- !u!4 &1722731395440005214 stripped
@@ -730,10 +743,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2400183498666204245, guid: bcb03cb412a12ed408118241e233ddf0,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2569870968638304468, guid: bcb03cb412a12ed408118241e233ddf0,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 4348524523734492392, guid: bcb03cb412a12ed408118241e233ddf0,
         type: 3}
       propertyPath: m_Name
       value: wallCorner
+      objectReference: {fileID: 0}
+    - target: {fileID: 4348524523734492392, guid: bcb03cb412a12ed408118241e233ddf0,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bcb03cb412a12ed408118241e233ddf0, type: 3}

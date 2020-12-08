@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6988419255784072095}
   - component: {fileID: 5834466019035361021}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Node (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53,7 +53,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2866831792132353912}
   - component: {fileID: 1343806139089487788}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Node (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -100,7 +100,7 @@ GameObject:
   - component: {fileID: 5201363242633166376}
   - component: {fileID: 3304225083245446027}
   - component: {fileID: 8290483734158243660}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: straight-streetlights
   m_TagString: Tile
   m_Icon: {fileID: 0}
@@ -238,7 +238,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4847473413672999495}
   - component: {fileID: 441653788359277284}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Node
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -281,7 +281,7 @@ GameObject:
   m_Component:
   - component: {fileID: 418010889676470962}
   - component: {fileID: 8081059035052275417}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Node (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -324,7 +324,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7376328630864763339}
   - component: {fileID: 2580814547947899162}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Node (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -419,6 +419,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2028067112722289365, guid: 22464fdf16f3e344ea0983b0aad4cc10,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 2864843776098347441, guid: 22464fdf16f3e344ea0983b0aad4cc10,
         type: 3}
       propertyPath: m_Name
@@ -428,6 +433,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2864843776098347441, guid: 22464fdf16f3e344ea0983b0aad4cc10,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6744860678354773601, guid: 22464fdf16f3e344ea0983b0aad4cc10,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 22464fdf16f3e344ea0983b0aad4cc10, type: 3}
@@ -448,6 +463,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: street_lamp_3 (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1364837033299835322, guid: ea787d1ecd0957340b18cf8fabacaa89,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 1364837033300059546, guid: ea787d1ecd0957340b18cf8fabacaa89,
         type: 3}
@@ -504,6 +524,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7094158215888127955, guid: ea787d1ecd0957340b18cf8fabacaa89,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea787d1ecd0957340b18cf8fabacaa89, type: 3}
 --- !u!4 &2377605541380312115 stripped
@@ -523,6 +548,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: street_lamp_3 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1364837033299835322, guid: ea787d1ecd0957340b18cf8fabacaa89,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 1364837033300059546, guid: ea787d1ecd0957340b18cf8fabacaa89,
         type: 3}
@@ -579,6 +609,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7094158215888127955, guid: ea787d1ecd0957340b18cf8fabacaa89,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea787d1ecd0957340b18cf8fabacaa89, type: 3}
 --- !u!4 &5997485452956600336 stripped
@@ -598,6 +633,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: street_lamp_3 (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1364837033299835322, guid: ea787d1ecd0957340b18cf8fabacaa89,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 1364837033300059546, guid: ea787d1ecd0957340b18cf8fabacaa89,
         type: 3}
@@ -653,6 +693,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7094158215888127955, guid: ea787d1ecd0957340b18cf8fabacaa89,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea787d1ecd0957340b18cf8fabacaa89, type: 3}
