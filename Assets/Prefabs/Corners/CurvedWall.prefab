@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2346365878346030455}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: CurvedWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45,6 +45,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: fence_1 (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7865635975848394285, guid: 9dc5ccd3465ba0047b9b4413cd0e5c5e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 7865635975848681997, guid: 9dc5ccd3465ba0047b9b4413cd0e5c5e,
         type: 3}
@@ -131,6 +136,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: fence_1 (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 7865635975848394285, guid: 9dc5ccd3465ba0047b9b4413cd0e5c5e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 7865635975848681997, guid: 9dc5ccd3465ba0047b9b4413cd0e5c5e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -216,6 +226,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: fence_1 (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 7865635975848394285, guid: 9dc5ccd3465ba0047b9b4413cd0e5c5e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 7865635975848681997, guid: 9dc5ccd3465ba0047b9b4413cd0e5c5e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -300,6 +315,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: fence_1 (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7865635975848394285, guid: 9dc5ccd3465ba0047b9b4413cd0e5c5e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 7865635975848681997, guid: 9dc5ccd3465ba0047b9b4413cd0e5c5e,
         type: 3}

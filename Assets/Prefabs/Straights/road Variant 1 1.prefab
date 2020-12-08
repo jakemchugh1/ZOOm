@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7380544612616770251}
   - component: {fileID: 6228200792449408937}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Node (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53,7 +53,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2404398982490496556}
   - component: {fileID: 1454949521549915896}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Node (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -100,7 +100,7 @@ GameObject:
   - component: {fileID: 5672802968355475324}
   - component: {fileID: 3120391207070970591}
   - component: {fileID: 8474256596599801368}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: road Variant 1 1
   m_TagString: Tile
   m_Icon: {fileID: 0}
@@ -237,7 +237,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5031227850704907027}
   - component: {fileID: 51296297816968112}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Node
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -280,7 +280,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6974624189152798879}
   - component: {fileID: 2686337089001764942}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Node (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -323,7 +323,7 @@ GameObject:
   m_Component:
   - component: {fileID: 241574531454028774}
   - component: {fileID: 8553070240503695245}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Node (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -367,6 +367,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: street_lamp_3 (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1364837033299835322, guid: ea787d1ecd0957340b18cf8fabacaa89,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 1364837033300059546, guid: ea787d1ecd0957340b18cf8fabacaa89,
         type: 3}
@@ -433,6 +438,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.6666667
       objectReference: {fileID: 0}
+    - target: {fileID: 7094158215888127955, guid: ea787d1ecd0957340b18cf8fabacaa89,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea787d1ecd0957340b18cf8fabacaa89, type: 3}
 --- !u!4 &5930508810637727339 stripped
@@ -452,6 +462,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: street_lamp_3 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1364837033299835322, guid: ea787d1ecd0957340b18cf8fabacaa89,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 1364837033300059546, guid: ea787d1ecd0957340b18cf8fabacaa89,
         type: 3}
@@ -517,6 +532,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.6666667
+      objectReference: {fileID: 0}
+    - target: {fileID: 7094158215888127955, guid: ea787d1ecd0957340b18cf8fabacaa89,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea787d1ecd0957340b18cf8fabacaa89, type: 3}
@@ -588,6 +608,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2028067112722289365, guid: 22464fdf16f3e344ea0983b0aad4cc10,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 2864843776098347441, guid: 22464fdf16f3e344ea0983b0aad4cc10,
         type: 3}
       propertyPath: m_Name
@@ -597,6 +622,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2864843776098347441, guid: 22464fdf16f3e344ea0983b0aad4cc10,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6744860678354773601, guid: 22464fdf16f3e344ea0983b0aad4cc10,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 22464fdf16f3e344ea0983b0aad4cc10, type: 3}

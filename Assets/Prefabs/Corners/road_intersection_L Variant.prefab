@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7080809461029346764}
   - component: {fileID: 5474146072139499126}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Node
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57,7 +57,7 @@ GameObject:
   - component: {fileID: 1355467244506754123}
   - component: {fileID: 1061155020267874470}
   - component: {fileID: 7942660662665874491}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: road_intersection_L Variant
   m_TagString: Tile
   m_Icon: {fileID: 0}
@@ -193,7 +193,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6396379564371614403}
   - component: {fileID: 8914129979839856269}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Node (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -236,7 +236,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8797926565830503447}
   - component: {fileID: 3908581606465078454}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Node (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -279,7 +279,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3449466945952897675}
   - component: {fileID: 7610243254047108295}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Node (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -322,7 +322,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8410255545783978507}
   - component: {fileID: 5281017156242690294}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Node (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -365,7 +365,7 @@ GameObject:
   m_Component:
   - component: {fileID: 572533195411055134}
   - component: {fileID: 1163686139224589650}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Node (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -460,10 +460,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2400183498666204245, guid: bcb03cb412a12ed408118241e233ddf0,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2569870968638304468, guid: bcb03cb412a12ed408118241e233ddf0,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 4348524523734492392, guid: bcb03cb412a12ed408118241e233ddf0,
         type: 3}
       propertyPath: m_Name
       value: wallCorner
+      objectReference: {fileID: 0}
+    - target: {fileID: 4348524523734492392, guid: bcb03cb412a12ed408118241e233ddf0,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bcb03cb412a12ed408118241e233ddf0, type: 3}
