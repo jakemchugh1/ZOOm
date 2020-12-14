@@ -30,6 +30,9 @@ public class WelcomeScript : MonoBehaviour
     public Button lapsPlus;
     public Button lapsMinus;
     public TMPro.TextMeshProUGUI lapsText;
+    public Camera smallCam;
+    public Button preBtn, nextBtn;
+    private int indexAnimal;
 
     
 
@@ -47,6 +50,11 @@ public class WelcomeScript : MonoBehaviour
         volumeSlider.onValueChanged.AddListener(delegate { onValueChanged(); });
         lapsPlus.onClick.AddListener(delegate { changeLaps(1); });
         lapsMinus.onClick.AddListener(delegate { changeLaps(-1); });
+        Button btnp = preBtn.GetComponent<Button>();
+		btnp.onClick.AddListener(preClick); 
+        Button btnn = nextBtn.GetComponent<Button>();
+		btnn.onClick.AddListener(nextClick);
+        indexAnimal = 0;
     }
 
     public void changeLaps(int change)
@@ -68,7 +76,7 @@ public class WelcomeScript : MonoBehaviour
         lapsText.text = "Number of Laps: " + GlobalVariables.numLaps;
         ScrollSnap s = hss.GetComponent<ScrollSnap>();
         //Debug.Log(s.CurrentPage());
-        switch (s.CurrentPage())
+        switch (indexAnimal)
         {
             case(0):
             animalLbl.text = "Bear";
@@ -167,4 +175,28 @@ public class WelcomeScript : MonoBehaviour
             GlobalVariables.selectedFile = "Track";
         }
     }
+     void preClick(){
+         Vector3 p = smallCam.transform.localPosition;
+        p.x-=3;
+         if(p.x<-100)
+         p.x=-91;
+         else
+         if(p.x>-91)
+         p.x=-100;
+         smallCam.transform.localPosition = p;
+         indexAnimal = (int)(p.x+100)/3;
+
+     }
+     void nextClick(){
+Vector3 p = smallCam.transform.localPosition;
+         p.x+=3;
+          if(p.x<-100)
+         p.x=-91;
+         else
+         if(p.x>-91)
+         p.x=-100;
+         smallCam.transform.localPosition = p;
+                  indexAnimal = (int)(p.x+100)/3;
+
+     }
 }

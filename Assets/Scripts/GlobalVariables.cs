@@ -4,7 +4,7 @@ using UnityEngine;
 
 public static class GlobalVariables 
 {
-    public static string selectedFile = "Track4";
+    public static string selectedFile = "Track1";
     public static Animal selectedAnimal = Animal.Bear;
     public static CarColor selectedCar = CarColor.Red;
     public static int aiDifficulty = 1;
