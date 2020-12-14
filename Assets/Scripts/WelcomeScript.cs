@@ -31,8 +31,9 @@ public class WelcomeScript : MonoBehaviour
     public Button lapsMinus;
     public TMPro.TextMeshProUGUI lapsText;
     public Camera smallCam;
-    public Button preBtn, nextBtn;
-    private int indexAnimal;
+    public Button preBtn, nextBtn, preCar, nextCar;
+    private int indexAnimal, indexCar;
+    public Camera smallCamCar;
 
     
 
@@ -54,6 +55,12 @@ public class WelcomeScript : MonoBehaviour
 		btnp.onClick.AddListener(preClick); 
         Button btnn = nextBtn.GetComponent<Button>();
 		btnn.onClick.AddListener(nextClick);
+        indexAnimal = 0;
+        Button btnp1 = preCar.GetComponent<Button>();
+		btnp1.onClick.AddListener(preCClick); 
+        Button btnn1 = nextCar.GetComponent<Button>();
+		btnn1.onClick.AddListener(nextCClick);
+        indexAnimal = 0;
         indexAnimal = 0;
     }
 
@@ -98,22 +105,26 @@ public class WelcomeScript : MonoBehaviour
             break;
         }
         ScrollSnap c = carhss.GetComponent<ScrollSnap>();
-        switch (c.CurrentPage())
+        switch (indexCar)
         {
             case(0):
             carLbl.text = "Red";
+            carLbl.color =  Color.red;
             GlobalVariables.selectedCar = CarColor.Red;
             break;
             case(1):
             carLbl.text = "Green";
+            carLbl.color =  Color.green;
             GlobalVariables.selectedCar = CarColor.Green;
             break; 
             case(2):
             carLbl.text = "Blue";
+            carLbl.color =  Color.blue;
             GlobalVariables.selectedCar = CarColor.Blue;
             break; 
             case(3):
             carLbl.text = "Yellow";
+            carLbl.color =  Color.yellow;
             GlobalVariables.selectedCar = CarColor.Yellow;
             break;
             default:
@@ -197,6 +208,30 @@ Vector3 p = smallCam.transform.localPosition;
          p.x=-100;
          smallCam.transform.localPosition = p;
                   indexAnimal = (int)(p.x+100)/3;
+
+     }
+     void preCClick(){
+         Vector3 p = smallCamCar.transform.localPosition;
+        p.x-=5;
+         if(p.x<-100)
+         p.x=-85.6f;
+         else
+         if(p.x>-85)
+         p.x=-100.6f;
+         smallCamCar.transform.localPosition = p;
+         indexCar = (int)(p.x+100+0.6)/5;
+
+     }
+     void nextCClick(){
+Vector3 p = smallCamCar.transform.localPosition;
+         p.x+=5;
+          if(p.x<-100)
+         p.x=-85.6f;
+         else
+         if(p.x>-85)
+         p.x=-100.6f;
+         smallCamCar.transform.localPosition = p;
+                  indexCar = (int)(p.x+100+0.6)/5;
 
      }
 }

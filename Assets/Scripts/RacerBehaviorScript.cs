@@ -64,6 +64,7 @@ public class RacerBehaviorScript : MonoBehaviour
 
     public ParticleSystem particles;
     public ParticleSystem backlight;
+    public ParticleSystem backlight2;
 
 
     public float driftTimer;
@@ -162,7 +163,7 @@ public class RacerBehaviorScript : MonoBehaviour
         GameObject animal = Instantiate( animals[selectAnimal], riderPos,  Quaternion.identity,transform);
         animal.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
         animal.transform.parent = transform;
-        animal.transform.localPosition = new Vector3(0, 0.6f, 0);
+        animal.transform.localPosition = new Vector3(0.2f, 0.5f, 0.45f);
 
         rb = GetComponent<Rigidbody>();
         Direction startingDirection = FindObjectOfType<TileObject>().exitDirection;
@@ -275,8 +276,10 @@ public class RacerBehaviorScript : MonoBehaviour
             }
             else
             {
-                 if(backlight)
+                 if(backlight){
                 backlight.Stop();
+                backlight2.Stop();
+                 }
                 this.startSpeedup = 0;
                 this.isSpeedup = false;
                  var volume = gameObject.GetComponent<Volume>();
@@ -911,7 +914,10 @@ public class RacerBehaviorScript : MonoBehaviour
         this.isSpeedup =true;
         this.startSpeedup = 0;
 
-         if(backlight)
+         if(backlight){
                 backlight.Play();
+                backlight2.Play();
+
+         }
     }
 }
